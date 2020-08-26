@@ -1,6 +1,8 @@
+/*
 import * as cdk from '@aws-cdk/core';
 import { Stack } from '@aws-cdk/core';
 import { NightyNight } from "../lib/nightynight";
+*/
 
 // DEV NOTE: ignoring all tests for now. The code below doesn't actually work well.
 // need to revisit.
