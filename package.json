@@ -2,6 +2,7 @@
   "name": "@matthewbonig/nightynight",
   "description": "A CDK construct that will automatically stop a running EC2 instance at a given time.",
   "version": "0.1.0",
+  "public": true,
   "bin": {
     "nightynight": "bin/nightynight.js"
   },
