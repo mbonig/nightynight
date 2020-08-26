@@ -39,7 +39,7 @@ This will stop the instance with id `i-123123123123` at (the default) 4am GMT.
 
 ## Contributing
 
-Please open Pull Requests and Issues on the [Github Repo](https://github.com/mbonig/sqs-redrive).
+Please open Pull Requests and Issues on the [Github Repo](https://github.com/mbonig/nightynight).
 
 ## License
 
