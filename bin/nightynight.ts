@@ -4,4 +4,4 @@ import * as cdk from '@aws-cdk/core';
 import { NightynightStack } from '../lib/nightynight-stack';
 
 const app = new cdk.App();
-new NightynightStack(app, 'NightynightStack');
+new NightynightStack(app, 'NightynightStack', {});
