@@ -64,7 +64,7 @@
     "@aws-cdk/aws-lambda": "^1.60.0",
     "@aws-cdk/aws-lambda-nodejs": "^1.60.0",
     "@aws-cdk/core": "1.60.0",
-    "cdk-iam-floyd": "^0.53.2"
+    "cdk-iam-floyd": "^0.54.1"
   },
   "targets": {
     "cdk-lambda": {
@@ -87,6 +87,7 @@
     "@aws-cdk/aws-lambda": "^1.60.0",
     "@aws-cdk/aws-lambda-nodejs": "^1.60.0",
     "@aws-cdk/core": "1.60.0",
-    "constructs": "^3.0.4"
+    "constructs": "^3.0.4",
+    "cdk-iam-floyd": "^0.54.1"
   }
 }

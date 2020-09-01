@@ -2,7 +2,6 @@ import { CronOptions, Rule, RuleTargetInput, Schedule } from "@aws-cdk/aws-event
 import { Arn, Construct, Stack } from "@aws-cdk/core";
 import { NodejsFunction } from "@aws-cdk/aws-lambda-nodejs";
 import { join } from "path";
-import { PolicyStatement } from "@aws-cdk/aws-iam";
 import { LambdaFunction } from "@aws-cdk/aws-events-targets";
 import * as statement from 'cdk-iam-floyd';
 
