@@ -4,7 +4,7 @@
   "description": "A CDK construct that will automatically stop a running EC2 instance at a given time.",
   "repository": {
     "type": "git",
-    "url": "git@github.com:mbonig/nightynight.git"
+    "url": "https://github.com/mbonig/nightynight"
   },
   "bin": {
     "nightynight": "bin/nightynight.js"

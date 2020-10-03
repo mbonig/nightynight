@@ -9,7 +9,7 @@ const project = new AwsCdkConstructLibrary({
     authorAddress: "matthew.bonig@gmail.com",
     authorName: "Matthew Bonig",
     cdkVersion: "1.65.0",
-    repository: "git@github.com:mbonig/nightynight.git",
+    repository: "https://github.com/mbonig/nightynight",
     bin: {
         "nightynight": "bin/nightynight.js"
     },
