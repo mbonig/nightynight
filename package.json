@@ -64,6 +64,7 @@
     "@aws-cdk/core": "^1.65.0",
     "cdk-iam-floyd": "0.54.1",
     "constructs": "^3.0.4",
+    "parcel": "v2.0.0-beta.1",
     "yarn": "1.22.10"
   },
   "dependencies": {
@@ -75,6 +76,7 @@
     "@aws-cdk/aws-lambda-nodejs": "^1.65.0",
     "@aws-cdk/core": "^1.65.0",
     "cdk-iam-floyd": "0.54.1",
+    "parcel": "v2.0.0-beta.1",
     "yarn": "1.22.10"
   },
   "bundledDependencies": [],
@@ -183,18 +185,5 @@
   "awscdkio": {
     "twitter": "mattbonig"
   },
-  "public": true,
-  "targets": {
-    "cdk-lambda": {
-      "context": "node",
-      "includeNodeModules": {
-        "aws-sdk": false
-      },
-      "sourceMap": false,
-      "minify": false,
-      "engines": {
-        "node": ">= 12"
-      }
-    }
-  }
+  "public": true
 }
