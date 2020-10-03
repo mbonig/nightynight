@@ -1,7 +1,8 @@
 const {AwsCdkConstructLibrary} = require('projen');
 
 let dependencies = {
-    "cdk-iam-floyd": "0.54.1"
+    "cdk-iam-floyd": "0.54.1",
+    "yarn": "1.22.10"
 };
 const project = new AwsCdkConstructLibrary({
     name: "@matthewbonig/nightynight",

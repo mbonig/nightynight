@@ -63,7 +63,8 @@
     "@aws-cdk/aws-lambda-nodejs": "^1.65.0",
     "@aws-cdk/core": "^1.65.0",
     "cdk-iam-floyd": "0.54.1",
-    "constructs": "^3.0.4"
+    "constructs": "^3.0.4",
+    "yarn": "1.22.10"
   },
   "dependencies": {
     "@aws-cdk/aws-ec2": "^1.65.0",
@@ -73,7 +74,8 @@
     "@aws-cdk/aws-lambda": "^1.65.0",
     "@aws-cdk/aws-lambda-nodejs": "^1.65.0",
     "@aws-cdk/core": "^1.65.0",
-    "cdk-iam-floyd": "0.54.1"
+    "cdk-iam-floyd": "0.54.1",
+    "yarn": "1.22.10"
   },
   "bundledDependencies": [],
   "keywords": [
