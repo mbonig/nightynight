@@ -49,10 +49,12 @@
     "jsii-pacmak": "^1.11.0",
     "jsii-release": "^0.1.6",
     "json-schema": "^0.2.5",
+    "parcel": "v2.0.0-beta.1",
     "projen": "^0.3.84",
     "standard-version": "^9.0.0",
     "ts-jest": "^26.1.0",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.5",
+    "yarn": "1.22.10"
   },
   "peerDependencies": {
     "@aws-cdk/aws-ec2": "^1.65.0",
@@ -63,9 +65,7 @@
     "@aws-cdk/aws-lambda-nodejs": "^1.65.0",
     "@aws-cdk/core": "^1.65.0",
     "cdk-iam-floyd": "0.54.1",
-    "constructs": "^3.0.4",
-    "parcel": "v2.0.0-beta.1",
-    "yarn": "1.22.10"
+    "constructs": "^3.0.4"
   },
   "dependencies": {
     "@aws-cdk/aws-ec2": "^1.65.0",
@@ -75,9 +75,7 @@
     "@aws-cdk/aws-lambda": "^1.65.0",
     "@aws-cdk/aws-lambda-nodejs": "^1.65.0",
     "@aws-cdk/core": "^1.65.0",
-    "cdk-iam-floyd": "0.54.1",
-    "parcel": "v2.0.0-beta.1",
-    "yarn": "1.22.10"
+    "cdk-iam-floyd": "0.54.1"
   },
   "bundledDependencies": [],
   "keywords": [
