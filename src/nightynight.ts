@@ -1,8 +1,8 @@
-import { CronOptions, Rule, RuleTargetInput, Schedule } from "@aws-cdk/aws-events";
-import { Arn, Construct, Stack } from "@aws-cdk/core";
-import { NodejsFunction } from "@aws-cdk/aws-lambda-nodejs";
-import { join } from "path";
-import { LambdaFunction } from "@aws-cdk/aws-events-targets";
+import { join } from 'path';
+import { CronOptions, Rule, RuleTargetInput, Schedule } from '@aws-cdk/aws-events';
+import { LambdaFunction } from '@aws-cdk/aws-events-targets';
+import { NodejsFunction } from '@aws-cdk/aws-lambda-nodejs';
+import { Arn, Construct, Stack } from '@aws-cdk/core';
 import * as statement from 'cdk-iam-floyd';
 
 export interface NightyNightProps {
@@ -34,10 +34,10 @@ export class NightyNight extends Construct {
   constructor(scope: Construct, id: string, props: NightyNightProps) {
     super(scope, id);
     const lambda = new NodejsFunction(this, 'handler', {
-      entry: join(__dirname, 'nightynight.handler.js'),
+      entry: join(__dirname, 'nightynight.handler.ts'),
       environment: {
-        INSTANCE_ID: props.instanceId
-      }
+        INSTANCE_ID: props.instanceId,
+      },
     });
 
     lambda.addToRolePolicy(new statement.Ec2().allow().toDescribeInstances());
@@ -45,20 +45,20 @@ export class NightyNight extends Construct {
     lambda.addToRolePolicy(new statement.Ec2().allow().toStopInstances().on(Arn.format({
       resourceName: props.instanceId,
       resource: 'instance',
-      service: 'ec2'
+      service: 'ec2',
     }, Stack.of(this))));
 
     let schedule = props.schedule || {
       day: '*',
       hour: '4',
-      minute: '0'
+      minute: '0',
     };
     const rule = new Rule(this, 'rule', {
-      schedule: Schedule.cron(schedule)
+      schedule: Schedule.cron(schedule),
     });
 
     rule.addTarget(new LambdaFunction(lambda, {
-      event: RuleTargetInput.fromObject({})
+      event: RuleTargetInput.fromObject({}),
     }));
   }
 }
