@@ -1,21 +1,36 @@
+import '@aws-cdk/assert/jest';
 import { App, Stack } from '@aws-cdk/core';
 import { NightyNight } from '../src/nightynight';
 
-// DEV NOTE: ignoring all tests for now. The code below doesn't actually work well.
-// need to revisit.
+describe('lambdas', () => {
+  test('has right lambda', () => {
+    const app = new App();
+    const stack = new Stack(app, 'test-stack');
+    // WHEN
+    new NightyNight(stack, 'nightynight', { instanceId: 'asdfasdfasdf' });
 
-
-test('default snapshot', () => {
-  const app = new App();
-  const stack = new Stack(app, 'test-stack');
-  // WHEN
-  new NightyNight(stack, 'nightynight', { instanceId: 'asdfasdfasdf' });
-
-  // THEN
-  expect(stack).toMatchSnapshot();
+    // THEN
+    expect(stack).toHaveResourceLike('AWS::Lambda::Function', {
+      Handler: 'index.handler',
+      Role: {
+        'Fn::GetAtt': [
+          'nightynighthandlerServiceRoleECB6B915',
+          'Arn',
+        ],
+      },
+      Runtime: 'nodejs12.x',
+      Environment: {
+        Variables: {
+          INSTANCE_ID: 'asdfasdfasdf',
+          AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
+        },
+      },
+    });
+  });
 });
 
-test('overriden cronoptions', () => {
+
+test('overridden cron-options', () => {
   const app = new App();
   const stack = new Stack(app, 'test-stack');
   // WHEN
@@ -28,5 +43,20 @@ test('overriden cronoptions', () => {
   });
 
   // THEN
-  expect(stack).toMatchSnapshot();
+  expect(stack).toHaveResourceLike('AWS::Events::Rule', {
+    ScheduleExpression: 'cron(15 4 * * ? *)',
+    State: 'ENABLED',
+    Targets: [
+      {
+        Arn: {
+          'Fn::GetAtt': [
+            'nightynighthandler1D5E04E4',
+            'Arn',
+          ],
+        },
+        Id: 'Target0',
+        Input: '{}',
+      },
+    ],
+  });
 });

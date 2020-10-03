@@ -33,7 +33,7 @@
     "organization": false
   },
   "devDependencies": {
-    "@aws-cdk/assert": "^1.60.0",
+    "@aws-cdk/assert": "^1.65.0",
     "@types/jest": "^26.0.7",
     "@types/node": "^10.17.0",
     "@typescript-eslint/eslint-plugin": "^4.3.0",
@@ -55,23 +55,24 @@
     "typescript": "^3.9.5"
   },
   "peerDependencies": {
-    "@aws-cdk/aws-ec2": "^1.60.0",
-    "@aws-cdk/aws-events": "^1.60.0",
-    "@aws-cdk/aws-events-targets": "^1.60.0",
-    "@aws-cdk/aws-iam": "^1.60.0",
-    "@aws-cdk/aws-lambda": "^1.60.0",
-    "@aws-cdk/aws-lambda-nodejs": "^1.60.0",
-    "@aws-cdk/core": "^1.60.0",
+    "@aws-cdk/aws-ec2": "^1.65.0",
+    "@aws-cdk/aws-events": "^1.65.0",
+    "@aws-cdk/aws-events-targets": "^1.65.0",
+    "@aws-cdk/aws-iam": "^1.65.0",
+    "@aws-cdk/aws-lambda": "^1.65.0",
+    "@aws-cdk/aws-lambda-nodejs": "^1.65.0",
+    "@aws-cdk/core": "^1.65.0",
+    "cdk-iam-floyd": "0.54.1",
     "constructs": "^3.0.4"
   },
   "dependencies": {
-    "@aws-cdk/aws-ec2": "^1.60.0",
-    "@aws-cdk/aws-events": "^1.60.0",
-    "@aws-cdk/aws-events-targets": "^1.60.0",
-    "@aws-cdk/aws-iam": "^1.60.0",
-    "@aws-cdk/aws-lambda": "^1.60.0",
-    "@aws-cdk/aws-lambda-nodejs": "^1.60.0",
-    "@aws-cdk/core": "^1.60.0",
+    "@aws-cdk/aws-ec2": "^1.65.0",
+    "@aws-cdk/aws-events": "^1.65.0",
+    "@aws-cdk/aws-events-targets": "^1.65.0",
+    "@aws-cdk/aws-iam": "^1.65.0",
+    "@aws-cdk/aws-lambda": "^1.65.0",
+    "@aws-cdk/aws-lambda-nodejs": "^1.65.0",
+    "@aws-cdk/core": "^1.65.0",
     "cdk-iam-floyd": "0.54.1"
   },
   "bundledDependencies": [],
@@ -180,5 +181,18 @@
   "awscdkio": {
     "twitter": "mattbonig"
   },
-  "public": true
+  "public": true,
+  "targets": {
+    "cdk-lambda": {
+      "context": "node",
+      "includeNodeModules": {
+        "aws-sdk": false
+      },
+      "sourceMap": false,
+      "minify": false,
+      "engines": {
+        "node": ">= 12"
+      }
+    }
+  }
 }

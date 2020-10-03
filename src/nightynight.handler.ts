@@ -2,7 +2,7 @@ const AWS = require('aws-sdk'); // eslint-disable-line
 const ec2 = new AWS.EC2();
 
 const instanceId = process.env.INSTANCE_ID;
-export const handler = async (event) => {
+export const handler = async (event: any) => {
   console.log({ event });
   console.log({ instanceId });
 

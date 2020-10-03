@@ -5,6 +5,9 @@ import { NodejsFunction } from '@aws-cdk/aws-lambda-nodejs';
 import { Arn, Construct, Stack } from '@aws-cdk/core';
 import * as statement from 'cdk-iam-floyd';
 
+/**
+ * Props for the NightNight construct.
+ */
 export interface NightyNightProps {
   /**
    * An option CronOptions to specify the time of day to stop the instance.
