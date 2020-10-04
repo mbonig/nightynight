@@ -41,6 +41,9 @@ const project = new AwsCdkConstructLibrary({
     releaseWorkflow: false
 });
 
+project.addScript(
+    "compile", "jsii --silence-warnings=reserved-word --no-fix-peer-dependencies && jsii-docgen && cp src/nightynight.handler.ts lib/nightynight.handler.ts"
+);
 
 project.addFields({
     main: "lib/nightynight.js",
@@ -53,5 +56,5 @@ project.addFields({
 
 project.gitignore.exclude("cdk.context.json", ".cdk.staging/", ".idea/", ".parcel-cache/", "cdk.out/");
 project.npmignore.exclude("cdk.out", ".cdk.staging");
-project.npmignore.include("lib/**/*.ts");
+project.npmignore.include("lib/nightynight.handler.ts");
 project.synth();

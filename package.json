@@ -16,7 +16,7 @@
     "bump": "yarn --silent no-changes || standard-version",
     "release": "yarn --silent no-changes || (yarn bump && git push --follow-tags origin master)",
     "projen:upgrade": "yarn upgrade -L projen && CI=\"\" yarn projen",
-    "compile": "jsii --silence-warnings=reserved-word --no-fix-peer-dependencies && jsii-docgen",
+    "compile": "jsii --silence-warnings=reserved-word --no-fix-peer-dependencies && jsii-docgen && cp src/nightynight.handler.ts lib/nightynight.handler.ts",
     "watch": "jsii -w --silence-warnings=reserved-word --no-fix-peer-dependencies",
     "build": "yarn test && yarn compile && yarn run package",
     "package": "jsii-pacmak",
