@@ -53,5 +53,5 @@ project.addFields({
 
 project.gitignore.exclude("cdk.context.json", ".cdk.staging/", ".idea/", ".parcel-cache/", "cdk.out/");
 project.npmignore.exclude("cdk.out", ".cdk.staging");
-
+project.npmignore.include("lib/**/*.ts");
 project.synth();
