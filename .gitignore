@@ -51,6 +51,7 @@ cdk.out/
 !/.projenrc.js
 !version.json
 !/.versionrc.json
+!/.github/workflows/build.yml
 !/.mergify.yml
 !/src
 !/tsconfig.jest.json
