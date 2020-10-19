@@ -12,11 +12,13 @@ dist
 /coverage
 /test
 /.eslintrc.json
-cdk.out
-.cdk.staging
+cdk.context.json
+.cdk.staging/
+.idea/
+.parcel-cache/
+cdk.out/
 !/lib
 !/lib/**/*.js
 !/lib/**/*.d.ts
 !.jsii
 !lib/nightynight.handler.ts
-/.parcel-cache
