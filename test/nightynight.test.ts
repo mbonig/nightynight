@@ -3,7 +3,7 @@ import { App, Stack } from '@aws-cdk/core';
 import { NightyNight } from '../src/nightynight';
 
 describe('lambdas', () => {
-  test('has right lambda', () => {
+  test('has right lambda', async () => {
     const app = new App();
     const stack = new Stack(app, 'test-stack');
     // WHEN

@@ -1,6 +1,7 @@
 import { join } from 'path';
 import { CronOptions, Rule, RuleTargetInput, Schedule } from '@aws-cdk/aws-events';
 import { LambdaFunction } from '@aws-cdk/aws-events-targets';
+import { Runtime } from '@aws-cdk/aws-lambda';
 import { NodejsFunction } from '@aws-cdk/aws-lambda-nodejs';
 import { Arn, Construct, Stack } from '@aws-cdk/core';
 import * as statement from 'cdk-iam-floyd';
@@ -38,6 +39,7 @@ export class NightyNight extends Construct {
     super(scope, id);
     const lambda = new NodejsFunction(this, 'handler', {
       entry: join(__dirname, 'nightynight.handler.ts'),
+      runtime: Runtime.NODEJS_12_X,
       environment: {
         INSTANCE_ID: props.instanceId,
       },
