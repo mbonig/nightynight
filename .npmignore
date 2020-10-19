@@ -19,3 +19,4 @@ cdk.out
 !/lib/**/*.d.ts
 !.jsii
 !lib/nightynight.handler.ts
+/.parcel-cache
