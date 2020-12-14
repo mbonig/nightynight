@@ -36,7 +36,7 @@ const project = new AwsCdkConstructLibrary({
         module: "mbonig.nightynight",
         distName: "mbonig.nightynight"
     },
-    dependabot: false,
+    dependabot: true,
     buildWorkflow: true,
     releaseWorkflow: false
 });

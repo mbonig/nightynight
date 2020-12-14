@@ -53,6 +53,7 @@ cdk.out/
 !/.versionrc.json
 !/.github/workflows/build.yml
 !/.mergify.yml
+!/.github/dependabot.yml
 !/src
 !/tsconfig.jest.json
 !/test
