@@ -39,6 +39,7 @@ const project = new AwsCdkConstructLibrary({
   dependabot: true,
   buildWorkflow: true,
   releaseWorkflow: false,
+  antitamper: false
 });
 
 project.addScript(
