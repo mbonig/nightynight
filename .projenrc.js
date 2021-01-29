@@ -8,7 +8,7 @@ const project = new AwsCdkConstructLibrary({
   description: 'A CDK construct that will automatically stop a running EC2 instance at a given time.',
   authorAddress: 'matthew.bonig@gmail.com',
   authorName: 'Matthew Bonig',
-  cdkVersion: '1.80.0',
+  cdkVersion: '1.85.0',
   repository: 'https://github.com/mbonig/nightynight',
   bin: {
     'nightynight': 'bin/nightynight.js',
