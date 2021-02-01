@@ -22,4 +22,4 @@ cdk.out/
 !/lib/**/*.js
 !/lib/**/*.d.ts
 !.jsii
-!lib/nightynight.handler.ts
+!lib/*.handler.ts

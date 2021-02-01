@@ -1,7 +1,7 @@
 import { Construct, Stack, StackProps } from '@aws-cdk/core';
-import { NightyNight } from './nightynight';
+import { NightyNight } from './ec2';
 
-export class NightynightStack extends Stack {
+export class NightyNightTestStack extends Stack {
 
   constructor(scope: Construct, id: string, props: StackProps) {
     super(scope, id, props);

@@ -9,7 +9,7 @@ import * as statement from 'cdk-iam-floyd';
 /**
  * Props for the NightNight construct.
  */
-export interface NightyNightProps {
+export interface NightyNightForRdsProps {
   /**
    * An option CronOptions to specify the time of day to stop the instance.
    *
@@ -21,34 +21,34 @@ export interface NightyNightProps {
    */
   readonly schedule?: CronOptions;
   /**
-   * the instanceId of the EC2 instance you'd like stopped.
+   * the DBInstanceIdentifier of the RDS instance you'd like stopped.
    */
-  readonly instanceId: string;
+  readonly dbInstanceIdentifier: string;
 }
 
 
 /**
  * A construct that will build a Lambda and a CloudWatch Rule (cron schedule)
- * that will stop the given ec2 instance at the specified time.
+ * that will stop the given rds instance at the specified time.
  *
- * Typically used when you've got ec2 instances that you only need during business hours
+ * Typically used when you've got rds instances that you only need during business hours
  * and want to reduce the costs of.
  */
-export class NightyNight extends Construct {
-  constructor(scope: Construct, id: string, props: NightyNightProps) {
+export class NightyNightForRds extends Construct {
+  constructor(scope: Construct, id: string, props: NightyNightForRdsProps) {
     super(scope, id);
     const lambda = new NodejsFunction(this, 'handler', {
-      entry: join(__dirname, 'nightynight.handler.ts'),
+      entry: join(__dirname, 'rds.handler.ts'),
       runtime: Runtime.NODEJS_12_X,
       environment: {
-        INSTANCE_ID: props.instanceId,
+        DB_INSTANCE_IDENTIFIER: props.dbInstanceIdentifier,
       },
     });
 
-    lambda.addToRolePolicy(new statement.Ec2().allow().toDescribeInstances());
+    lambda.addToRolePolicy(new statement.Rds().allow().toDescribeDBInstances());
 
-    lambda.addToRolePolicy(new statement.Ec2().allow().toStopInstances().on(Arn.format({
-      resourceName: props.instanceId,
+    lambda.addToRolePolicy(new statement.Rds().allow().toStopDBInstance().on(Arn.format({
+      resourceName: props.dbInstanceIdentifier,
       resource: 'instance',
       service: 'ec2',
     }, Stack.of(this))));

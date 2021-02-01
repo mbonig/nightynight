@@ -26,6 +26,7 @@ const project = new AwsCdkConstructLibrary({
     '@aws-cdk/aws-iam',
     '@aws-cdk/aws-lambda',
     '@aws-cdk/aws-lambda-nodejs',
+    '@aws-cdk/aws-rds',
     '@aws-cdk/core',
   ],
   keywords: [
@@ -43,12 +44,12 @@ const project = new AwsCdkConstructLibrary({
 });
 
 project.addScript(
-  'compile', 'jsii --silence-warnings=reserved-word --no-fix-peer-dependencies && jsii-docgen && cp src/nightynight.handler.ts lib/nightynight.handler.ts',
+  'compile', 'jsii --silence-warnings=reserved-word --no-fix-peer-dependencies && jsii-docgen && cp src/*.handler.ts lib/',
 );
 
 project.addFields({
-  main: 'lib/nightynight.js',
-  types: 'lib/nightynight.d.ts',
+  main: 'lib/index.js',
+  types: 'lib/index.d.ts',
   awscdkio: {
     twitter: 'mattbonig',
   },
@@ -57,5 +58,5 @@ project.addFields({
 
 project.gitignore.exclude('cdk.context.json', '.cdk.staging/', '.idea/', '.parcel-cache/', 'cdk.out/');
 project.npmignore.exclude('cdk.context.json', '.cdk.staging/', '.idea/', '.parcel-cache/', 'cdk.out/');
-project.npmignore.include('lib/nightynight.handler.ts');
+project.npmignore.include('lib/*.handler.ts');
 project.synth();
