@@ -49,8 +49,8 @@ export class NightyNightForRds extends Construct {
 
     lambda.addToRolePolicy(new statement.Rds().allow().toStopDBInstance().on(Arn.format({
       resourceName: props.dbInstanceIdentifier,
-      resource: 'instance',
-      service: 'ec2',
+      resource: 'db',
+      service: 'rds',
     }, Stack.of(this))));
 
     let schedule = props.schedule || {

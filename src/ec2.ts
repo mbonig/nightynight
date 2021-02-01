@@ -69,7 +69,9 @@ export class NightyNightForEc2 extends Construct {
 }
 
 
-export interface NightyNightProps extends NightyNightForEc2Props {}
+export interface NightyNightProps extends NightyNightForEc2Props {
+}
+
 /**
  * This class is deprecated, please use NightyNightForEc2
  *
