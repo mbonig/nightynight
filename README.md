@@ -7,7 +7,7 @@ That's the NightyNight construct. It's very simple. Give it an `instanceId` and 
 
 # This is a pre-release!
 
-This is a quick first-draft. All the options that will likely need to be added to accomodate a large
+This is a quick first-draft. All the options that will likely need to be added to accommodate a large
 number of use-cases are still needed. If you'd like to make requests or help update this construct, please
 open an [Issue](https://github.com/mbonig/nightynight/issues) or a [PR](https://github.com/mbonig/cicd-spa-website/pulls).
 
@@ -21,14 +21,15 @@ open an [Issue](https://github.com/mbonig/nightynight/issues) or a [PR](https://
 # Example:
 
 ```typescript
+import {NightyNightForEc2} from "./ec2";
 
-export class NightynightStack extends Stack {
+export class NightyNightStack extends Stack {
 
   constructor(scope: Construct, id: string, props: StackProps) {
     super(scope, id, props);
 
     // The code that defines your stack goes here
-    new NightyNight(this, 'nighty-night', {instanceId: 'i-123123123123'});
+    new NightyNightForEc2(this, 'nighty-night', {instanceId: 'i-123123123123'});
   }
 }
 
@@ -36,6 +37,9 @@ export class NightynightStack extends Stack {
 
 This will stop the instance with id `i-123123123123` at (the default) 4am GMT.
 
+# API Doc
+
+See the [API Docs](./API.md) for more info.
 
 ## Contributing
 
