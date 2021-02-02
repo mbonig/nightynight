@@ -1,9 +1,13 @@
 # NightyNight!
 
-Do you have a EC2 instance that you only need during certain hours of the day? Do you want to reduce it's cost? How about just stopping it every night?
+Do you have a EC2 instance or an RDS instance that you only need during certain hours of the day? Do you want to reduce it's cost? How about just stopping it every night?
 
 That's the NightyNight construct. It's very simple. Give it an `instanceId` and it will create a Lambda and a CloudWatch Event Rule to fire the lambda at a specific time of day. If the instance is running, it's stopped.
 
+There are currently two variations of the construct:
+
+* [NightyNightForEc2](./API.md#class-nightynightforec2--a-idmatthewbonig-nightynight-nightynightforec2a) - stops an EC2 instance at a given time.
+* [NightyNightForRds](./API.md#class-nightynightforrds--a-idmatthewbonig-nightynight-nightynightforrdsa) - stops an RDS instance at a given time.
 
 # This is a pre-release!
 
@@ -11,7 +15,7 @@ This is a quick first-draft. All the options that will likely need to be added t
 number of use-cases are still needed. If you'd like to make requests or help update this construct, please
 open an [Issue](https://github.com/mbonig/nightynight/issues) or a [PR](https://github.com/mbonig/cicd-spa-website/pulls).
 
-# What is creates
+# What it creates
 
 ![arch.png](./arch.png)
 
