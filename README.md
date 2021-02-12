@@ -6,8 +6,9 @@ That's the NightyNight construct. It's very simple. Give it an `instanceId` and 
 
 There are currently two variations of the construct:
 
-* [NightyNightForEc2](./API.md#class-nightynightforec2--a-idmatthewbonig-nightynight-nightynightforec2a) - stops an EC2 instance at a given time.
-* [NightyNightForRds](./API.md#class-nightynightforrds--a-idmatthewbonig-nightynight-nightynightforrdsa) - stops an RDS instance at a given time.
+* [NightyNightForEc2](./API.md#matthewbonig-nightynight-nightynightforec2) - stops an EC2 instance at a given time.
+* [NightyNightForRds](./API.md#matthewbonig-nightynight-nightynightforrds) - stops an RDS instance at a given time.
+* [NightyNightForAsg](./API.md#matthewbonig-nightynight-nightynightforasg) - sets the desired capacity for an ASG at a given time.
 
 # This is a pre-release!
 

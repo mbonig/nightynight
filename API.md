@@ -5,6 +5,7 @@
 Name|Description
 ----|-----------
 [NightyNight](#matthewbonig-nightynight-nightynight)|This class is deprecated, please use NightyNightForEc2.
+[NightyNightForAsg](#matthewbonig-nightynight-nightynightforasg)|A construct that will build a Lambda and a CloudWatch Rule (cron schedule) that will set the given ASG's desired capacity.
 [NightyNightForEc2](#matthewbonig-nightynight-nightynightforec2)|A construct that will build a Lambda and a CloudWatch Rule (cron schedule) that will stop the given ec2 instance at the specified time.
 [NightyNightForRds](#matthewbonig-nightynight-nightynightforrds)|A construct that will build a Lambda and a CloudWatch Rule (cron schedule) that will stop the given rds instance at the specified time.
 
@@ -13,6 +14,7 @@ Name|Description
 
 Name|Description
 ----|-----------
+[NightyNightForAsgProps](#matthewbonig-nightynight-nightynightforasgprops)|Props for the NightNight construct.
 [NightyNightForEc2Props](#matthewbonig-nightynight-nightynightforec2props)|Props for the NightNight construct.
 [NightyNightForRdsProps](#matthewbonig-nightynight-nightynightforrdsprops)|Props for the NightNight construct.
 [NightyNightProps](#matthewbonig-nightynight-nightynightprops)|*No description*
@@ -39,6 +41,34 @@ new NightyNight(scope: Construct, id: string, props: NightyNightProps)
 * **id** (<code>string</code>)  *No description*
 * **props** (<code>[NightyNightProps](#matthewbonig-nightynight-nightynightprops)</code>)  *No description*
   * **instanceId** (<code>string</code>)  the instanceId of the EC2 instance you'd like stopped. 
+  * **schedule** (<code>[CronOptions](#aws-cdk-aws-events-cronoptions)</code>)  An option CronOptions to specify the time of day to stop the instance. __*Default*__: { day: '*', hour: '4', minute: '0' }
+
+
+
+
+## class NightyNightForAsg  <a id="matthewbonig-nightynight-nightynightforasg"></a>
+
+A construct that will build a Lambda and a CloudWatch Rule (cron schedule) that will set the given ASG's desired capacity.
+
+Typically used when you've got and ASG that you can scale during set hours.
+
+__Implements__: [IConstruct](#constructs-iconstruct), [IConstruct](#aws-cdk-core-iconstruct), [IConstruct](#constructs-iconstruct), [IDependable](#aws-cdk-core-idependable)
+__Extends__: [Construct](#aws-cdk-core-construct)
+
+### Initializer
+
+
+
+
+```ts
+new NightyNightForAsg(scope: Construct, id: string, props: NightyNightForAsgProps)
+```
+
+* **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
+* **id** (<code>string</code>)  *No description*
+* **props** (<code>[NightyNightForAsgProps](#matthewbonig-nightynight-nightynightforasgprops)</code>)  *No description*
+  * **autoScalingGroup** (<code>[IAutoScalingGroup](#aws-cdk-aws-autoscaling-iautoscalinggroup)</code>)  the instanceId of the EC2 instance you'd like stopped. 
+  * **desiredCapacity** (<code>number</code>)  Desired capacity. 
   * **schedule** (<code>[CronOptions](#aws-cdk-aws-events-cronoptions)</code>)  An option CronOptions to specify the time of day to stop the instance. __*Default*__: { day: '*', hour: '4', minute: '0' }
 
 
@@ -97,6 +127,21 @@ new NightyNightForRds(scope: Construct, id: string, props: NightyNightForRdsProp
   * **dbInstanceIdentifier** (<code>string</code>)  the DBInstanceIdentifier of the RDS instance you'd like stopped. 
   * **schedule** (<code>[CronOptions](#aws-cdk-aws-events-cronoptions)</code>)  An option CronOptions to specify the time of day to stop the instance. __*Default*__: { day: '*', hour: '4', minute: '0' }
 
+
+
+
+## struct NightyNightForAsgProps  <a id="matthewbonig-nightynight-nightynightforasgprops"></a>
+
+
+Props for the NightNight construct.
+
+
+
+Name | Type | Description 
+-----|------|-------------
+**autoScalingGroup** | <code>[IAutoScalingGroup](#aws-cdk-aws-autoscaling-iautoscalinggroup)</code> | the instanceId of the EC2 instance you'd like stopped.
+**desiredCapacity** | <code>number</code> | Desired capacity.
+**schedule**? | <code>[CronOptions](#aws-cdk-aws-events-cronoptions)</code> | An option CronOptions to specify the time of day to stop the instance.<br/>__*Default*__: { day: '*', hour: '4', minute: '0' }
 
 
 

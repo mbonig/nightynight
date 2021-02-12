@@ -1,12 +1,13 @@
+import { AutoScalingGroup } from '@aws-cdk/aws-autoscaling';
 import { Construct, Stack, StackProps } from '@aws-cdk/core';
-import { NightyNight } from './ec2';
+import { NightyNightForAsg } from './asg';
 
 export class NightyNightTestStack extends Stack {
 
   constructor(scope: Construct, id: string, props: StackProps) {
     super(scope, id, props);
 
-    // The code that defines your stack goes here
-    new NightyNight(this, 'nighty-night', { instanceId: 'i-123123123123' });
+    const asg = AutoScalingGroup.fromAutoScalingGroupName(this, 'asg', 'dev-v1app-appasgASGE5B53758-1IWON4QLBGIUP');
+    new NightyNightForAsg(this, 'nighty-night', { autoScalingGroup: asg, desiredCapacity: 0 });
   }
 }

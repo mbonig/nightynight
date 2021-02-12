@@ -1,7 +1,7 @@
 const { AwsCdkConstructLibrary } = require('projen');
 
 let dependencies = [
-  'cdk-iam-floyd'
+  'cdk-iam-floyd',
 ];
 const project = new AwsCdkConstructLibrary({
   name: '@matthewbonig/nightynight',
@@ -11,8 +11,9 @@ const project = new AwsCdkConstructLibrary({
   cdkVersion: '1.85.0',
   repository: 'https://github.com/mbonig/nightynight',
   bin: {
-    'nightynight': 'bin/nightynight.js',
+    nightynight: 'lib/nightynight.js',
   },
+  defaultReleaseBranch: 'master',
   deps: dependencies,
   peerDeps: dependencies,
   devDeps: [
@@ -20,6 +21,7 @@ const project = new AwsCdkConstructLibrary({
     'esbuild',
   ],
   cdkDependencies: [
+    '@aws-cdk/aws-autoscaling',
     '@aws-cdk/aws-ec2',
     '@aws-cdk/aws-events',
     '@aws-cdk/aws-events-targets',
@@ -40,12 +42,13 @@ const project = new AwsCdkConstructLibrary({
   dependabot: true,
   buildWorkflow: true,
   releaseWorkflow: false,
-  antitamper: false
+  antitamper: false,
+  cdkVersionPinning: true,
 });
 
-project.addScript(
-  'compile', 'jsii --silence-warnings=reserved-word --no-fix-peer-dependencies && jsii-docgen && cp src/*.handler.ts lib/',
-);
+project.addTask('compile', {
+  exec: 'jsii --silence-warnings=reserved-word --no-fix-peer-dependencies && jsii-docgen && cp src/*.handler.ts lib/',
+});
 
 project.addFields({
   main: 'lib/index.js',
