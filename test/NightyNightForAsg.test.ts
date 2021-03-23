@@ -4,7 +4,7 @@ import { InstanceClass, InstanceSize, InstanceType, MachineImage, Vpc } from '@a
 import { App, Stack } from '@aws-cdk/core';
 import { NightyNightForAsg } from '../src';
 
-describe('asg', () => {
+describe('NightyNightForAsg', () => {
   test('has right lambda', async () => {
     const app = new App();
     const stack = new Stack(app, 'test-stack');

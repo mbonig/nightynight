@@ -2,7 +2,7 @@ import '@aws-cdk/assert/jest';
 import { App, Stack } from '@aws-cdk/core';
 import { NightyNightForEc2 } from '../src';
 
-describe('ec2', () => {
+describe('NightyNightForEc2', () => {
   test('has right lambda', async () => {
     const app = new App();
     const stack = new Stack(app, 'test-stack');

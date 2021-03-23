@@ -10,9 +10,6 @@ const project = new AwsCdkConstructLibrary({
   authorName: 'Matthew Bonig',
   cdkVersion: '1.89.0',
   repository: 'https://github.com/mbonig/nightynight',
-  bin: {
-    nightynight: 'lib/nightynight.js',
-  },
   defaultReleaseBranch: 'master',
   deps: dependencies,
   peerDeps: dependencies,

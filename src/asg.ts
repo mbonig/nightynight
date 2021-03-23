@@ -12,7 +12,7 @@ import * as statement from 'cdk-iam-floyd';
  */
 export interface NightyNightForAsgProps {
   /**
-   * An option CronOptions to specify the time of day to stop the instance.
+   * An option CronOptions to specify the time of day to scale.
    *
    * @default {
       day: '*',
@@ -23,7 +23,7 @@ export interface NightyNightForAsgProps {
   readonly schedule?: CronOptions;
 
   /**
-   * the instanceId of the EC2 instance you'd like stopped.
+   * the AutoScalingGroup you'd like to change the instance count on.
    */
   readonly autoScalingGroup: IAutoScalingGroup;
 
@@ -44,7 +44,7 @@ export class NightyNightForAsg extends Construct {
   constructor(scope: Construct, id: string, props: NightyNightForAsgProps) {
     super(scope, id);
     const lambda = new NodejsFunction(this, 'handler', {
-      entry: join(__dirname, 'asg.handler.ts'),
+      entry: join(__dirname, 'NightyNightForAsg.handler.ts'),
       runtime: Runtime.NODEJS_12_X,
       environment: {
         AUTO_SCALING_GROUP_NAME: props.autoScalingGroup.autoScalingGroupName,
