@@ -1,20 +1,20 @@
 import '@aws-cdk/assert/jest';
 import { App, Stack } from '@aws-cdk/core';
-import { NightyNightForRds } from '../src';
+import { WakeyWakeyForRds } from '../src';
 
-describe('rds', () => {
+describe('WakeyWakeyForRds', () => {
   test('has right lambda', async () => {
     const app = new App();
     const stack = new Stack(app, 'test-stack');
     // WHEN
-    new NightyNightForRds(stack, 'nightynight', { dbInstanceIdentifier: 'asdfasdfasdf' });
+    new WakeyWakeyForRds(stack, 'wakeywakey', { dbInstanceIdentifier: 'asdfasdfasdf' });
 
     // THEN
     expect(stack).toHaveResourceLike('AWS::Lambda::Function', {
       Handler: 'index.handler',
       Role: {
         'Fn::GetAtt': [
-          'nightynighthandlerServiceRoleECB6B915',
+          'wakeywakeyhandlerServiceRoleD2A85E64',
           'Arn',
         ],
       },
@@ -32,7 +32,7 @@ describe('rds', () => {
     const app = new App();
     const stack = new Stack(app, 'test-stack');
     // WHEN
-    new NightyNightForRds(stack, 'nightynight', {
+    new WakeyWakeyForRds(stack, 'wakeywakey', {
       dbInstanceIdentifier: 'asdfasdfasdf',
       schedule: {
         minute: '15',
@@ -48,7 +48,7 @@ describe('rds', () => {
         {
           Arn: {
             'Fn::GetAtt': [
-              'nightynighthandler1D5E04E4',
+              'wakeywakeyhandlerF518780E',
               'Arn',
             ],
           },
