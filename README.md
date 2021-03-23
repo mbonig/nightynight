@@ -1,4 +1,4 @@
-# NightyNight!
+# NightyNight and WakeyWakey!
 
 Do you have a EC2 instance or an RDS instance that you only need during certain hours of the day? Do you want to reduce it's cost? How about just stopping it every night?
 
@@ -9,6 +9,16 @@ There are currently two variations of the construct:
 * [NightyNightForEc2](./API.md#matthewbonig-nightynight-nightynightforec2) - stops an EC2 instance at a given time.
 * [NightyNightForRds](./API.md#matthewbonig-nightynight-nightynightforrds) - stops an RDS instance at a given time.
 * [NightyNightForAsg](./API.md#matthewbonig-nightynight-nightynightforasg) - sets the desired capacity for an ASG at a given time.
+
+# WakeyWakey
+
+The WakeyWakey construct (from [this](https://github.com/mbonig/wakeywakey) repository) has been integrated into this library. You don't need to install
+a separate dependency anymore. 
+
+* [WakeyWakeyForEc2](./API.md#matthewbonig-nightynight-wakeywakeyforec2) - start an EC2 instance at a given time.
+* [WakeyWakeyForRds](./API.md#matthewbonig-nightynight-wakeywakeyforrds) - start an RDS instance at a given time.
+
+There isn't a specific construct for starting ASGs, since you can just set the count to whatever you want.
 
 # This is a pre-release!
 
@@ -26,7 +36,7 @@ open an [Issue](https://github.com/mbonig/nightynight/issues) or a [PR](https://
 # Example:
 
 ```typescript
-import {NightyNightForEc2} from "./ec2";
+import {NightyNightForEc2, WakeyWakeyForEc2} from "./ec2";
 
 export class NightyNightStack extends Stack {
 
@@ -35,12 +45,13 @@ export class NightyNightStack extends Stack {
 
     // The code that defines your stack goes here
     new NightyNightForEc2(this, 'nighty-night', {instanceId: 'i-123123123123'});
+    new WakeyWakeyForEc2(this, 'wakey-wakey', {instanceId: 'i-123123123123'})
   }
 }
 
 ```
 
-This will stop the instance with id `i-123123123123` at (the default) 4am GMT.
+This will stop the instance with id `i-123123123123` at (the default) 4am UTC. It will then start the instance at 12am UTC.
 
 # API Doc
 

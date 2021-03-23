@@ -139,7 +139,7 @@ new NightyNightForRds(scope: Construct, id: string, props: NightyNightForRdsProp
 A construct that will build a Lambda and a CloudWatch Rule (cron schedule) that will start the given ec2 instance at the specified time.
 
 Typically used when you've got ec2 instances that you only need during business hours
-and want to reduce the costs of. Use in conjunciton with the Nightynight construct at
+and want to reduce the costs of. Use in conjunction with the Nightynight construct at
 
 __Implements__: [IConstruct](#constructs-iconstruct), [IConstruct](#aws-cdk-core-iconstruct), [IConstruct](#constructs-iconstruct), [IDependable](#aws-cdk-core-idependable)
 __Extends__: [Construct](#aws-cdk-core-construct)
@@ -184,7 +184,7 @@ new WakeyWakeyForRds(scope: Construct, id: string, props: WakeyWakeyForRdsProps)
 * **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
 * **id** (<code>string</code>)  *No description*
 * **props** (<code>[WakeyWakeyForRdsProps](#matthewbonig-nightynight-wakeywakeyforrdsprops)</code>)  *No description*
-  * **dbInstanceIdentifier** (<code>string</code>)  the DBInstanceIdentifier of the RDS instance you'd like stopped. 
+  * **dbInstanceIdentifier** (<code>string</code>)  the DBInstanceIdentifier of the RDS instance you'd like started. 
   * **schedule** (<code>[CronOptions](#aws-cdk-aws-events-cronoptions)</code>)  An option CronOptions to specify the time of day to start the instance. __*Default*__: { day: '*', hour: '4', minute: '0' }
 
 
@@ -270,7 +270,7 @@ Props for the WakeyWakeyForRds construct.
 
 Name | Type | Description 
 -----|------|-------------
-**dbInstanceIdentifier** | <code>string</code> | the DBInstanceIdentifier of the RDS instance you'd like stopped.
+**dbInstanceIdentifier** | <code>string</code> | the DBInstanceIdentifier of the RDS instance you'd like started.
 **schedule**? | <code>[CronOptions](#aws-cdk-aws-events-cronoptions)</code> | An option CronOptions to specify the time of day to start the instance.<br/>__*Default*__: { day: '*', hour: '4', minute: '0' }
 
 
