@@ -111,7 +111,7 @@ export class WakeyWakeyForRds extends Construct {
 
     lambda.addToRolePolicy(new statement.Rds().allow().toDescribeDBInstances());
 
-    lambda.addToRolePolicy(new statement.Rds().allow().toStopDBInstance().on(Arn.format({
+    lambda.addToRolePolicy(new statement.Rds().allow().toStartDBInstance().on(Arn.format({
       resourceName: props.dbInstanceIdentifier,
       resource: 'db',
       sep: ':',
