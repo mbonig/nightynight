@@ -18,6 +18,7 @@ const project = new AwsCdkConstructLibrary({
     'yarn',
     'esbuild',
   ],
+
   cdkDependencies: [
     '@aws-cdk/aws-autoscaling',
     '@aws-cdk/aws-ec2',
