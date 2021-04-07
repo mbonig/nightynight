@@ -28,5 +28,3 @@ jobs:
           BUILD_PACKAGES: true
           NPM_OPTIONS: ${{ secrets.NPM_OPTIONS }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
-          NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
