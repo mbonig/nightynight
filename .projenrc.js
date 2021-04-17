@@ -3,13 +3,14 @@ const { AwsCdkConstructLibrary } = require('projen');
 const dependencies = [
   'cdk-iam-floyd',
 ];
-const cdkVersion = process.env.CDK_VERSION || '1.93.0';
+const cdkVersion = '1.98.0';
 const project = new AwsCdkConstructLibrary({
   name: '@matthewbonig/nightynight',
   description: 'A CDK construct that will automatically stop a running EC2 instance at a given time.',
   authorAddress: 'matthew.bonig@gmail.com',
   authorName: 'Matthew Bonig',
   cdkVersion: cdkVersion,
+  cdkDependenciesAsDeps: false,
   repository: 'https://github.com/mbonig/nightynight',
   defaultReleaseBranch: 'master',
   deps: dependencies,
