@@ -26,6 +26,9 @@ This is a quick first-draft. All the options that will likely need to be added t
 number of use-cases are still needed. If you'd like to make requests or help update this construct, please
 open an [Issue](https://github.com/mbonig/nightynight/issues) or a [PR](https://github.com/mbonig/cicd-spa-website/pulls).
 
+There are multiple versions of this library published. You should be using the v0.X.X versions for now.
+There are versions published that match the CDK version they depend on, but don't use those.
+
 # What it creates
 
 ![arch.png](./arch.png)
