@@ -63,7 +63,7 @@
           "spawn": "test:compile"
         },
         {
-          "exec": "jest --passWithNoTests --all"
+          "exec": "jest --passWithNoTests --all --updateSnapshot"
         },
         {
           "spawn": "eslint"
@@ -75,6 +75,9 @@
       "category": "00.build",
       "description": "Full release build (test+compile)",
       "steps": [
+        {
+          "exec": "npx projen"
+        },
         {
           "spawn": "test"
         },

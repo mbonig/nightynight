@@ -41,9 +41,6 @@ const project = new AwsCdkConstructLibrary({
   },
   dependabot: true,
   buildWorkflow: true,
-  releaseWorkflow: false,
-  projenDuringBuild: false,
-  antitamper: false,
   cdkVersionPinning: true,
 });
 
