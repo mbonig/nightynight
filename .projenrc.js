@@ -41,7 +41,6 @@ const project = new AwsCdkConstructLibrary({
   },
   dependabot: true,
   buildWorkflow: true,
-  cdkVersionPinning: true,
 });
 
 project.addTask('compile', {

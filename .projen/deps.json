@@ -2,52 +2,52 @@
   "dependencies": [
     {
       "name": "@aws-cdk/assert",
-      "version": "1.98.0",
+      "version": "^1.98.0",
       "type": "build"
     },
     {
       "name": "@aws-cdk/aws-autoscaling",
-      "version": "1.98.0",
+      "version": "^1.98.0",
       "type": "build"
     },
     {
       "name": "@aws-cdk/aws-ec2",
-      "version": "1.98.0",
+      "version": "^1.98.0",
       "type": "build"
     },
     {
       "name": "@aws-cdk/aws-events-targets",
-      "version": "1.98.0",
+      "version": "^1.98.0",
       "type": "build"
     },
     {
       "name": "@aws-cdk/aws-events",
-      "version": "1.98.0",
+      "version": "^1.98.0",
       "type": "build"
     },
     {
       "name": "@aws-cdk/aws-iam",
-      "version": "1.98.0",
+      "version": "^1.98.0",
       "type": "build"
     },
     {
       "name": "@aws-cdk/aws-lambda-nodejs",
-      "version": "1.98.0",
+      "version": "^1.98.0",
       "type": "build"
     },
     {
       "name": "@aws-cdk/aws-lambda",
-      "version": "1.98.0",
+      "version": "^1.98.0",
       "type": "build"
     },
     {
       "name": "@aws-cdk/aws-rds",
-      "version": "1.98.0",
+      "version": "^1.98.0",
       "type": "build"
     },
     {
       "name": "@aws-cdk/core",
-      "version": "1.98.0",
+      "version": "^1.98.0",
       "type": "build"
     },
     {
@@ -140,47 +140,47 @@
     },
     {
       "name": "@aws-cdk/aws-autoscaling",
-      "version": "1.98.0",
+      "version": "^1.98.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-ec2",
-      "version": "1.98.0",
+      "version": "^1.98.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-events-targets",
-      "version": "1.98.0",
+      "version": "^1.98.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-events",
-      "version": "1.98.0",
+      "version": "^1.98.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-iam",
-      "version": "1.98.0",
+      "version": "^1.98.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-lambda-nodejs",
-      "version": "1.98.0",
+      "version": "^1.98.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-lambda",
-      "version": "1.98.0",
+      "version": "^1.98.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-rds",
-      "version": "1.98.0",
+      "version": "^1.98.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/core",
-      "version": "1.98.0",
+      "version": "^1.98.0",
       "type": "peer"
     },
     {
