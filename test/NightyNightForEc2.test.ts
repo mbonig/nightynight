@@ -18,10 +18,53 @@ describe('NightyNightForEc2', () => {
           'Arn',
         ],
       },
-      Runtime: 'nodejs12.x',
+      Runtime: 'nodejs14.x',
       Environment: {
         Variables: {
           INSTANCE_ID: 'asdfasdfasdf',
+          INSTANCE_FILTERS: '',
+          AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
+        },
+      },
+    });
+  });
+
+  test('Works with tags', () => {
+    const app = new App();
+    const stack = new Stack(app, 'test-stack');
+    // WHEN
+    let filters = [
+      {
+        Name: 'STRING_VALUE',
+        Values: [
+          'STRING_VALUE',
+          /* more items */
+        ],
+      },
+      /* more items */
+    ];
+    new NightyNightForEc2(stack, 'nightynight', {
+      filters: filters,
+      schedule: {
+        minute: '15',
+        hour: '4',
+      },
+    });
+
+    // THEN
+    expect(stack).toHaveResourceLike('AWS::Lambda::Function', {
+      Handler: 'index.handler',
+      Role: {
+        'Fn::GetAtt': [
+          'nightynighthandlerServiceRoleECB6B915',
+          'Arn',
+        ],
+      },
+      Runtime: 'nodejs14.x',
+      Environment: {
+        Variables: {
+          INSTANCE_ID: '',
+          INSTANCE_FILTERS: JSON.stringify(filters),
           AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
         },
       },
@@ -58,6 +101,7 @@ describe('NightyNightForEc2', () => {
       ],
     });
   });
+
 });
 
 

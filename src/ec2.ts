@@ -21,9 +21,15 @@ export interface NightyNightForEc2Props {
    */
   readonly schedule?: CronOptions;
   /**
-   * the instanceId of the EC2 instance you'd like stopped.
+   * the instanceId of the EC2 instance you'd like stopped. Must provide this if tags is not provided.
    */
-  readonly instanceId: string;
+  readonly instanceId?: string;
+
+  /**
+   * Filters to match to find an EC2 instance. Must provide this if instanceId is not provided. If instanceId is provided this
+   * is ignored.
+   */
+  readonly filters?: any[];
 }
 
 
@@ -39,9 +45,10 @@ export class NightyNightForEc2 extends Construct {
     super(scope, id);
     const lambda = new NodejsFunction(this, 'handler', {
       entry: join(__dirname, 'NightyNightForEc2.handler.ts'),
-      runtime: Runtime.NODEJS_12_X,
+      runtime: Runtime.NODEJS_14_X,
       environment: {
-        INSTANCE_ID: props.instanceId,
+        INSTANCE_ID: props.instanceId ?? '',
+        INSTANCE_FILTERS: props.filters ? JSON.stringify(props.filters) : '',
       },
     });
 
@@ -96,9 +103,22 @@ export interface WakeyWakeyForEc2Props {
    */
   readonly schedule?: CronOptions;
   /**
-   * the instanceId of the EC2 instance you'd like started.
+   * the instanceId of the EC2 instance you'd like started. If instanceId is provided the filters is ignored.
    */
-  readonly instanceId: string;
+  readonly instanceId?: string;
+
+  /**
+   * Filters to match to find an EC2 instance. Must provide this if instanceId is not provided. If instanceId is provided this
+   * is ignored.
+   *
+   * @example [{
+      Name: 'STRING_VALUE',
+      Values: [
+        'STRING_VALUE',
+      ]
+    }]
+   */
+  readonly filters?: any[];
 }
 
 
@@ -116,7 +136,8 @@ export class WakeyWakeyForEc2 extends Construct {
     const lambda = new NodejsFunction(this, 'handler', {
       entry: join(__dirname, 'WakeyWakeyForEc2.handler.ts'),
       environment: {
-        INSTANCE_ID: props.instanceId,
+        INSTANCE_ID: props.instanceId ?? '',
+        INSTANCE_FILTERS: props.filters ? JSON.stringify(props.filters) : '',
       },
       runtime: Runtime.NODEJS_12_X,
     });

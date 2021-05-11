@@ -2,17 +2,27 @@ const AWS = require('aws-sdk'); // eslint-disable-line
 const ec2 = new AWS.EC2();
 
 const instanceId = process.env.INSTANCE_ID;
+const filters = process.env.INSTANCE_FILTERS;
 export const handler = async (event: any) => {
   console.log({ event });
-  console.log({ instanceId });
+  console.log({ instanceId, filters });
+
+  if (!instanceId && !filters) {
+    console.error('You must have either an INSTANCE_ID or INSTANCE_TAGS in your environment variables.');
+  }
 
   console.log('Getting instance details');
 
-  let params = {
-    InstanceIds: [
-      instanceId,
-    ],
+  let params: any = {
+    InstanceIds: [],
   };
+
+  if (instanceId) {
+    params.InstanceIds.push(instanceId);
+  } else if (filters) {
+    params.Filters = JSON.parse(filters);
+  }
+
   const {
     Reservations: [{ Instances: [instanceDetails] }],
   } = await ec2.describeInstances(params).promise();

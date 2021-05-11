@@ -44,7 +44,8 @@ new NightyNight(scope: Construct, id: string, props: NightyNightProps)
 * **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
 * **id** (<code>string</code>)  *No description*
 * **props** (<code>[NightyNightProps](#matthewbonig-nightynight-nightynightprops)</code>)  *No description*
-  * **instanceId** (<code>string</code>)  the instanceId of the EC2 instance you'd like stopped. 
+  * **filters** (<code>Array<any></code>)  Filters to match to find an EC2 instance. __*Optional*__
+  * **instanceId** (<code>string</code>)  the instanceId of the EC2 instance you'd like stopped. __*Optional*__
   * **schedule** (<code>[CronOptions](#aws-cdk-aws-events-cronoptions)</code>)  An option CronOptions to specify the time of day to stop the instance. __*Default*__: { day: '*', hour: '4', minute: '0' }
 
 
@@ -100,7 +101,8 @@ new NightyNightForEc2(scope: Construct, id: string, props: NightyNightForEc2Prop
 * **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
 * **id** (<code>string</code>)  *No description*
 * **props** (<code>[NightyNightForEc2Props](#matthewbonig-nightynight-nightynightforec2props)</code>)  *No description*
-  * **instanceId** (<code>string</code>)  the instanceId of the EC2 instance you'd like stopped. 
+  * **filters** (<code>Array<any></code>)  Filters to match to find an EC2 instance. __*Optional*__
+  * **instanceId** (<code>string</code>)  the instanceId of the EC2 instance you'd like stopped. __*Optional*__
   * **schedule** (<code>[CronOptions](#aws-cdk-aws-events-cronoptions)</code>)  An option CronOptions to specify the time of day to stop the instance. __*Default*__: { day: '*', hour: '4', minute: '0' }
 
 
@@ -156,7 +158,8 @@ new WakeyWakeyForEc2(scope: Construct, id: string, props: WakeyWakeyForEc2Props)
 * **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
 * **id** (<code>string</code>)  *No description*
 * **props** (<code>[WakeyWakeyForEc2Props](#matthewbonig-nightynight-wakeywakeyforec2props)</code>)  *No description*
-  * **instanceId** (<code>string</code>)  the instanceId of the EC2 instance you'd like started. 
+  * **filters** (<code>Array<any></code>)  Filters to match to find an EC2 instance. __*Optional*__
+  * **instanceId** (<code>string</code>)  the instanceId of the EC2 instance you'd like started. __*Optional*__
   * **schedule** (<code>[CronOptions](#aws-cdk-aws-events-cronoptions)</code>)  An option CronOptions to specify the time of day to start the instance. __*Default*__: { day: '*', hour: '12', minute: '0' }
 
 
@@ -214,7 +217,8 @@ Props for the NightNight construct.
 
 Name | Type | Description 
 -----|------|-------------
-**instanceId** | <code>string</code> | the instanceId of the EC2 instance you'd like stopped.
+**filters**? | <code>Array<any></code> | Filters to match to find an EC2 instance.<br/>__*Optional*__
+**instanceId**? | <code>string</code> | the instanceId of the EC2 instance you'd like stopped.<br/>__*Optional*__
 **schedule**? | <code>[CronOptions](#aws-cdk-aws-events-cronoptions)</code> | An option CronOptions to specify the time of day to stop the instance.<br/>__*Default*__: { day: '*', hour: '4', minute: '0' }
 
 
@@ -242,7 +246,8 @@ Name | Type | Description
 
 Name | Type | Description 
 -----|------|-------------
-**instanceId** | <code>string</code> | the instanceId of the EC2 instance you'd like stopped.
+**filters**? | <code>Array<any></code> | Filters to match to find an EC2 instance.<br/>__*Optional*__
+**instanceId**? | <code>string</code> | the instanceId of the EC2 instance you'd like stopped.<br/>__*Optional*__
 **schedule**? | <code>[CronOptions](#aws-cdk-aws-events-cronoptions)</code> | An option CronOptions to specify the time of day to stop the instance.<br/>__*Default*__: { day: '*', hour: '4', minute: '0' }
 
 
@@ -256,7 +261,8 @@ Name | Type | Description
 
 Name | Type | Description 
 -----|------|-------------
-**instanceId** | <code>string</code> | the instanceId of the EC2 instance you'd like started.
+**filters**? | <code>Array<any></code> | Filters to match to find an EC2 instance.<br/>__*Optional*__
+**instanceId**? | <code>string</code> | the instanceId of the EC2 instance you'd like started.<br/>__*Optional*__
 **schedule**? | <code>[CronOptions](#aws-cdk-aws-events-cronoptions)</code> | An option CronOptions to specify the time of day to start the instance.<br/>__*Default*__: { day: '*', hour: '12', minute: '0' }
 
 
