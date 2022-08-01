@@ -52,6 +52,9 @@
           "spawn": "bundle:functions/NightyNightForEc2.lambda"
         },
         {
+          "spawn": "bundle:functions/NightyNightForEcs.lambda"
+        },
+        {
           "spawn": "bundle:functions/NightyNightForRds.lambda"
         },
         {
@@ -95,6 +98,24 @@
       "steps": [
         {
           "exec": "esbuild --bundle src/functions/NightyNightForEc2.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/functions/NightyNightForEc2.lambda/index.js\" --external:aws-sdk --watch"
+        }
+      ]
+    },
+    "bundle:functions/NightyNightForEcs.lambda": {
+      "name": "bundle:functions/NightyNightForEcs.lambda",
+      "description": "Create a JavaScript bundle from src/functions/NightyNightForEcs.lambda.ts",
+      "steps": [
+        {
+          "exec": "esbuild --bundle src/functions/NightyNightForEcs.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/functions/NightyNightForEcs.lambda/index.js\" --external:aws-sdk"
+        }
+      ]
+    },
+    "bundle:functions/NightyNightForEcs.lambda:watch": {
+      "name": "bundle:functions/NightyNightForEcs.lambda:watch",
+      "description": "Continuously update the JavaScript bundle from src/functions/NightyNightForEcs.lambda.ts",
+      "steps": [
+        {
+          "exec": "esbuild --bundle src/functions/NightyNightForEcs.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/functions/NightyNightForEcs.lambda/index.js\" --external:aws-sdk --watch"
         }
       ]
     },
@@ -289,6 +310,10 @@
         }
       ]
     },
+    "post-upgrade": {
+      "name": "post-upgrade",
+      "description": "Runs after upgrading dependencies"
+    },
     "pre-compile": {
       "name": "pre-compile",
       "description": "Prepare the project for compilation",
@@ -366,6 +391,45 @@
       "steps": [
         {
           "builtin": "release/reset-version"
+        }
+      ]
+    },
+    "upgrade": {
+      "name": "upgrade",
+      "description": "upgrade dependencies",
+      "env": {
+        "CI": "0"
+      },
+      "steps": [
+        {
+          "exec": "yarn upgrade npm-check-updates"
+        },
+        {
+          "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='aws-cdk-lib,constructs'"
+        },
+        {
+          "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='aws-cdk-lib,constructs'"
+        },
+        {
+          "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='aws-cdk-lib,constructs'"
+        },
+        {
+          "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='aws-cdk-lib,constructs'"
+        },
+        {
+          "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='aws-cdk-lib,constructs'"
+        },
+        {
+          "exec": "yarn install --check-files"
+        },
+        {
+          "exec": "yarn upgrade"
+        },
+        {
+          "exec": "npx projen"
+        },
+        {
+          "spawn": "post-upgrade"
         }
       ]
     },

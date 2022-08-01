@@ -7,6 +7,7 @@ Name|Description
 [NightyNight](#matthewbonig-nightynight-nightynight)|This class is deprecated, please use NightyNightForEc2.
 [NightyNightForAsg](#matthewbonig-nightynight-nightynightforasg)|A construct that will build a Lambda and a CloudWatch Rule (cron schedule) that will set the given ASG's desired capacity.
 [NightyNightForEc2](#matthewbonig-nightynight-nightynightforec2)|A construct that will build a Lambda and a CloudWatch Rule (cron schedule) that will stop the given ec2 instance at the specified time.
+[NightyNightForEcs](#matthewbonig-nightynight-nightynightforecs)|A construct that will build a Lambda and a CloudWatch Rule (cron schedule) that will set the given ECS Service's desired capacity.
 [NightyNightForRds](#matthewbonig-nightynight-nightynightforrds)|A construct that will build a Lambda and a CloudWatch Rule (cron schedule) that will stop the given rds instance at the specified time.
 [WakeyWakeyForEc2](#matthewbonig-nightynight-wakeywakeyforec2)|A construct that will build a Lambda and a CloudWatch Rule (cron schedule) that will start the given ec2 instance at the specified time.
 [WakeyWakeyForRds](#matthewbonig-nightynight-wakeywakeyforrds)|A construct that will build a Lambda and a CloudWatch Rule (cron schedule) that will start the given rds instance at the specified time.
@@ -18,6 +19,7 @@ Name|Description
 ----|-----------
 [NightyNightForAsgProps](#matthewbonig-nightynight-nightynightforasgprops)|Props for the NightNight construct.
 [NightyNightForEc2Props](#matthewbonig-nightynight-nightynightforec2props)|Props for the NightNight construct.
+[NightyNightForEcsProps](#matthewbonig-nightynight-nightynightforecsprops)|Props for the NightNight construct.
 [NightyNightForRdsProps](#matthewbonig-nightynight-nightynightforrdsprops)|Props for the NightNight construct.
 [NightyNightProps](#matthewbonig-nightynight-nightynightprops)|*No description*
 [WakeyWakeyForEc2Props](#matthewbonig-nightynight-wakeywakeyforec2props)|*No description*
@@ -104,6 +106,35 @@ new NightyNightForEc2(scope: Construct, id: string, props: NightyNightForEc2Prop
   * **filters** (<code>Array<any></code>)  Filters to match to find an EC2 instance. __*Optional*__
   * **instanceId** (<code>string</code>)  the instanceId of the EC2 instance you'd like stopped. __*Optional*__
   * **schedule** (<code>[aws_events.CronOptions](#aws-cdk-lib-aws-events-cronoptions)</code>)  An option CronOptions to specify the time of day to stop the instance. __*Default*__: { day: '*', hour: '4', minute: '0' }
+
+
+
+
+## class NightyNightForEcs  <a id="matthewbonig-nightynight-nightynightforecs"></a>
+
+A construct that will build a Lambda and a CloudWatch Rule (cron schedule) that will set the given ECS Service's desired capacity.
+
+Typically, used when you've got an ECS Service that you can scale during set hours.
+
+__Implements__: [IConstruct](#constructs-iconstruct), [IDependable](#constructs-idependable)
+__Extends__: [Construct](#constructs-construct)
+
+### Initializer
+
+
+
+
+```ts
+new NightyNightForEcs(scope: Construct, id: string, props: NightyNightForEcsProps)
+```
+
+* **scope** (<code>[Construct](#constructs-construct)</code>)  *No description*
+* **id** (<code>string</code>)  *No description*
+* **props** (<code>[NightyNightForEcsProps](#matthewbonig-nightynight-nightynightforecsprops)</code>)  *No description*
+  * **desiredCapacity** (<code>number</code>)  Desired capacity. 
+  * **serviceName** (<code>string</code>)  The service name to update. 
+  * **cluster** (<code>[aws_ecs.ICluster](#aws-cdk-lib-aws-ecs-icluster)</code>)  The ECS Cluster where the service resides. __*Default*__: 'default'
+  * **schedule** (<code>[aws_events.CronOptions](#aws-cdk-lib-aws-events-cronoptions)</code>)  An option CronOptions to specify the time of day to scale. __*Default*__: { day: '*', hour: '4', minute: '0' }
 
 
 
@@ -220,6 +251,22 @@ Name | Type | Description
 **filters**? | <code>Array<any></code> | Filters to match to find an EC2 instance.<br/>__*Optional*__
 **instanceId**? | <code>string</code> | the instanceId of the EC2 instance you'd like stopped.<br/>__*Optional*__
 **schedule**? | <code>[aws_events.CronOptions](#aws-cdk-lib-aws-events-cronoptions)</code> | An option CronOptions to specify the time of day to stop the instance.<br/>__*Default*__: { day: '*', hour: '4', minute: '0' }
+
+
+
+## struct NightyNightForEcsProps  <a id="matthewbonig-nightynight-nightynightforecsprops"></a>
+
+
+Props for the NightNight construct.
+
+
+
+Name | Type | Description 
+-----|------|-------------
+**desiredCapacity** | <code>number</code> | Desired capacity.
+**serviceName** | <code>string</code> | The service name to update.
+**cluster**? | <code>[aws_ecs.ICluster](#aws-cdk-lib-aws-ecs-icluster)</code> | The ECS Cluster where the service resides.<br/>__*Default*__: 'default'
+**schedule**? | <code>[aws_events.CronOptions](#aws-cdk-lib-aws-events-cronoptions)</code> | An option CronOptions to specify the time of day to scale.<br/>__*Default*__: { day: '*', hour: '4', minute: '0' }
 
 
 

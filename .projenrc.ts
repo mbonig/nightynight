@@ -1,6 +1,7 @@
 const { awscdk } = require('projen');
 
 const dependencies = [
+  '@aws-sdk/client-ecs',
   'cdk-iam-floyd',
 ];
 const project = new awscdk.AwsCdkConstructLibrary({
@@ -15,8 +16,11 @@ const project = new awscdk.AwsCdkConstructLibrary({
   majorVersion: 2,
   repository: 'https://github.com/mbonig/nightynight',
   defaultReleaseBranch: 'main',
-  deps: dependencies,
-  peerDeps: dependencies,
+  deps: ['cdk-iam-floyd'],
+  peerDeps: ['cdk-iam-floyd'],
+  bundledDeps: [
+    '@aws-sdk/client-ecs',
+  ],
   devDeps: [
     'yarn',
     'esbuild',
@@ -32,7 +36,6 @@ const project = new awscdk.AwsCdkConstructLibrary({
     module: 'mbonig.nightynight',
     distName: 'mbonig.nightynight',
   },
-  dependabot: true,
   buildWorkflow: true,
 });
 
@@ -47,5 +50,5 @@ project.addFields({
 
 project.gitignore.exclude('cdk.context.json', '.cdk.staging/', '.idea/', '.parcel-cache/', 'cdk.out/');
 project.npmignore.exclude('cdk.context.json', '.cdk.staging/', '.idea/', '.parcel-cache/', 'cdk.out/');
-project.npmignore.include('lib/*.handler.ts');
+
 project.synth();

@@ -27,4 +27,3 @@ cdk.context.json
 .idea/
 .parcel-cache/
 cdk.out/
-!lib/*.handler.ts

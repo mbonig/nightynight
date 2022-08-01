@@ -9,6 +9,7 @@ There are currently two variations of the construct:
 * [NightyNightForEc2](./API.md#matthewbonig-nightynight-nightynightforec2) - stops an EC2 instance at a given time.
 * [NightyNightForRds](./API.md#matthewbonig-nightynight-nightynightforrds) - stops an RDS instance at a given time.
 * [NightyNightForAsg](./API.md#matthewbonig-nightynight-nightynightforasg) - sets the desired capacity for an ASG at a given time.
+* [NightyNightForEcs](./API.md#matthewbonig-nightynight-nightynightforecs) - sets the desired capacity for an ECS service at a given time.
 
 # WakeyWakey
 
@@ -18,7 +19,7 @@ a separate dependency anymore.
 * [WakeyWakeyForEc2](./API.md#matthewbonig-nightynight-wakeywakeyforec2) - start an EC2 instance at a given time.
 * [WakeyWakeyForRds](./API.md#matthewbonig-nightynight-wakeywakeyforrds) - start an RDS instance at a given time.
 
-There isn't a specific construct for starting ASGs, since you can just set the count to whatever you want.
+There isn't a specific construct for starting ASGs or ECS services, since you can just set the count to whatever you want.
 
 # This is a pre-release!
 

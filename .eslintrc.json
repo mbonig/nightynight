@@ -153,6 +153,7 @@
           "projenrc/**/*.ts",
           "src/functions/NightyNightForAsg.lambda.ts",
           "src/functions/NightyNightForEc2.lambda.ts",
+          "src/functions/NightyNightForEcs.lambda.ts",
           "src/functions/NightyNightForRds.lambda.ts",
           "src/functions/WakeyWakeyForEc2.lambda.ts",
           "src/functions/WakeyWakeyForRds.lambda.ts"

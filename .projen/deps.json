@@ -82,6 +82,11 @@
       "type": "build"
     },
     {
+      "name": "npm-check-updates",
+      "version": "^15",
+      "type": "build"
+    },
+    {
       "name": "projen",
       "type": "build"
     },
@@ -106,6 +111,10 @@
     {
       "name": "yarn",
       "type": "build"
+    },
+    {
+      "name": "@aws-sdk/client-ecs",
+      "type": "bundled"
     },
     {
       "name": "aws-cdk-lib",
