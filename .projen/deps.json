@@ -1,78 +1,37 @@
 {
   "dependencies": [
     {
-      "name": "@aws-cdk/assert",
-      "version": "^1.98.0",
-      "type": "build"
-    },
-    {
-      "name": "@aws-cdk/aws-autoscaling",
-      "version": "^1.98.0",
-      "type": "build"
-    },
-    {
-      "name": "@aws-cdk/aws-ec2",
-      "version": "^1.98.0",
-      "type": "build"
-    },
-    {
-      "name": "@aws-cdk/aws-events-targets",
-      "version": "^1.98.0",
-      "type": "build"
-    },
-    {
-      "name": "@aws-cdk/aws-events",
-      "version": "^1.98.0",
-      "type": "build"
-    },
-    {
-      "name": "@aws-cdk/aws-iam",
-      "version": "^1.98.0",
-      "type": "build"
-    },
-    {
-      "name": "@aws-cdk/aws-lambda-nodejs",
-      "version": "^1.98.0",
-      "type": "build"
-    },
-    {
-      "name": "@aws-cdk/aws-lambda",
-      "version": "^1.98.0",
-      "type": "build"
-    },
-    {
-      "name": "@aws-cdk/aws-rds",
-      "version": "^1.98.0",
-      "type": "build"
-    },
-    {
-      "name": "@aws-cdk/core",
-      "version": "^1.98.0",
-      "type": "build"
-    },
-    {
       "name": "@types/jest",
+      "version": "^27",
       "type": "build"
     },
     {
       "name": "@types/node",
-      "version": "^10.17.0",
+      "version": "^14",
       "type": "build"
     },
     {
       "name": "@typescript-eslint/eslint-plugin",
+      "version": "^5",
       "type": "build"
     },
     {
       "name": "@typescript-eslint/parser",
+      "version": "^5",
+      "type": "build"
+    },
+    {
+      "name": "aws-cdk-lib",
+      "version": "2.30.0",
+      "type": "build"
+    },
+    {
+      "name": "constructs",
+      "version": "10.0.5",
       "type": "build"
     },
     {
       "name": "esbuild",
-      "type": "build"
-    },
-    {
-      "name": "eslint",
       "type": "build"
     },
     {
@@ -88,12 +47,18 @@
       "type": "build"
     },
     {
-      "name": "jest",
+      "name": "eslint",
+      "version": "^8",
       "type": "build"
     },
     {
       "name": "jest-junit",
-      "version": "^12",
+      "version": "^13",
+      "type": "build"
+    },
+    {
+      "name": "jest",
+      "version": "^27",
       "type": "build"
     },
     {
@@ -118,7 +83,6 @@
     },
     {
       "name": "projen",
-      "version": "^0.17.44",
       "type": "build"
     },
     {
@@ -128,6 +92,11 @@
     },
     {
       "name": "ts-jest",
+      "version": "^27",
+      "type": "build"
+    },
+    {
+      "name": "ts-node",
       "type": "build"
     },
     {
@@ -139,48 +108,8 @@
       "type": "build"
     },
     {
-      "name": "@aws-cdk/aws-autoscaling",
-      "version": "^1.98.0",
-      "type": "peer"
-    },
-    {
-      "name": "@aws-cdk/aws-ec2",
-      "version": "^1.98.0",
-      "type": "peer"
-    },
-    {
-      "name": "@aws-cdk/aws-events-targets",
-      "version": "^1.98.0",
-      "type": "peer"
-    },
-    {
-      "name": "@aws-cdk/aws-events",
-      "version": "^1.98.0",
-      "type": "peer"
-    },
-    {
-      "name": "@aws-cdk/aws-iam",
-      "version": "^1.98.0",
-      "type": "peer"
-    },
-    {
-      "name": "@aws-cdk/aws-lambda-nodejs",
-      "version": "^1.98.0",
-      "type": "peer"
-    },
-    {
-      "name": "@aws-cdk/aws-lambda",
-      "version": "^1.98.0",
-      "type": "peer"
-    },
-    {
-      "name": "@aws-cdk/aws-rds",
-      "version": "^1.98.0",
-      "type": "peer"
-    },
-    {
-      "name": "@aws-cdk/core",
-      "version": "^1.98.0",
+      "name": "aws-cdk-lib",
+      "version": "^2.30.0",
       "type": "peer"
     },
     {
@@ -189,7 +118,7 @@
     },
     {
       "name": "constructs",
-      "version": "^3.2.27",
+      "version": "^10.0.5",
       "type": "peer"
     },
     {

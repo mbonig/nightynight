@@ -1,11 +1,9 @@
-import { join } from 'path';
-import { IAutoScalingGroup } from '@aws-cdk/aws-autoscaling';
-import { CronOptions, Rule, RuleTargetInput, Schedule } from '@aws-cdk/aws-events';
-import { LambdaFunction } from '@aws-cdk/aws-events-targets';
-import { Runtime } from '@aws-cdk/aws-lambda';
-import { NodejsFunction } from '@aws-cdk/aws-lambda-nodejs';
-import { Construct } from '@aws-cdk/core';
+import { IAutoScalingGroup } from 'aws-cdk-lib/aws-autoscaling';
+import { CronOptions, Rule, RuleTargetInput, Schedule } from 'aws-cdk-lib/aws-events';
+import { LambdaFunction } from 'aws-cdk-lib/aws-events-targets';
 import * as statement from 'cdk-iam-floyd';
+import { Construct } from 'constructs';
+import { NightyNightForAsgFunction } from './functions/NightyNightForAsg-function';
 
 /**
  * Props for the NightNight construct.
@@ -43,9 +41,7 @@ export interface NightyNightForAsgProps {
 export class NightyNightForAsg extends Construct {
   constructor(scope: Construct, id: string, props: NightyNightForAsgProps) {
     super(scope, id);
-    const lambda = new NodejsFunction(this, 'handler', {
-      entry: join(__dirname, 'NightyNightForAsg.handler.ts'),
-      runtime: Runtime.NODEJS_12_X,
+    const lambda = new NightyNightForAsgFunction(this, 'handler', {
       environment: {
         AUTO_SCALING_GROUP_NAME: props.autoScalingGroup.autoScalingGroupName,
         DESIRED_CAPACITY: props.desiredCapacity.toString(),

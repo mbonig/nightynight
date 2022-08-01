@@ -1,39 +1,31 @@
-const { AwsCdkConstructLibrary } = require('projen');
+const { awscdk } = require('projen');
 
 const dependencies = [
   'cdk-iam-floyd',
 ];
-const cdkVersion = '1.98.0';
-const project = new AwsCdkConstructLibrary({
+const project = new awscdk.AwsCdkConstructLibrary({
   name: '@matthewbonig/nightynight',
+  repositoryUrl: 'https://github.com/mbonig/nightynight',
+  author: 'matthew.bonig@gmail.com',
   description: 'A CDK construct that will automatically stop a running EC2 instance at a given time.',
   authorAddress: 'matthew.bonig@gmail.com',
   authorName: 'Matthew Bonig',
-  cdkVersion: cdkVersion,
-  cdkDependenciesAsDeps: false,
+  cdkVersion: '2.30.0',
+  projenrcTs: true,
   repository: 'https://github.com/mbonig/nightynight',
-  defaultReleaseBranch: 'master',
+  defaultReleaseBranch: 'main',
   deps: dependencies,
   peerDeps: dependencies,
   devDeps: [
     'yarn',
     'esbuild',
-  ],
-
-  cdkDependencies: [
-    '@aws-cdk/aws-autoscaling',
-    '@aws-cdk/aws-ec2',
-    '@aws-cdk/aws-events',
-    '@aws-cdk/aws-events-targets',
-    '@aws-cdk/aws-iam',
-    '@aws-cdk/aws-lambda',
-    '@aws-cdk/aws-lambda-nodejs',
-    '@aws-cdk/aws-rds',
-    '@aws-cdk/core',
+    'eslint',
   ],
   keywords: [
     'cdk',
     'ec2',
+    'rds',
+    'cron',
   ],
   python: {
     module: 'mbonig.nightynight',
@@ -41,10 +33,6 @@ const project = new AwsCdkConstructLibrary({
   },
   dependabot: true,
   buildWorkflow: true,
-});
-
-project.addTask('compile', {
-  exec: 'jsii --silence-warnings=reserved-word --no-fix-peer-dependencies && jsii-docgen && cp src/*.handler.ts lib/',
 });
 
 project.addFields({

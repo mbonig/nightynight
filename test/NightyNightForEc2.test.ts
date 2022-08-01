@@ -1,5 +1,5 @@
-import '@aws-cdk/assert/jest';
-import { App, Stack } from '@aws-cdk/core';
+import { App, Stack } from 'aws-cdk-lib';
+import { Template } from 'aws-cdk-lib/assertions';
 import { NightyNightForEc2 } from '../src';
 
 describe('NightyNightForEc2', () => {
@@ -10,7 +10,8 @@ describe('NightyNightForEc2', () => {
     new NightyNightForEc2(stack, 'nightynight', { instanceId: 'asdfasdfasdf' });
 
     // THEN
-    expect(stack).toHaveResourceLike('AWS::Lambda::Function', {
+    const assert = Template.fromStack(stack);
+    assert.hasResourceProperties('AWS::Lambda::Function', {
       Handler: 'index.handler',
       Role: {
         'Fn::GetAtt': [
@@ -52,7 +53,8 @@ describe('NightyNightForEc2', () => {
     });
 
     // THEN
-    expect(stack).toHaveResourceLike('AWS::Lambda::Function', {
+    const assert = Template.fromStack(stack);
+    assert.hasResourceProperties('AWS::Lambda::Function', {
       Handler: 'index.handler',
       Role: {
         'Fn::GetAtt': [
@@ -84,7 +86,8 @@ describe('NightyNightForEc2', () => {
     });
 
     // THEN
-    expect(stack).toHaveResourceLike('AWS::Events::Rule', {
+    const assert = Template.fromStack(stack);
+    assert.hasResourceProperties('AWS::Events::Rule', {
       ScheduleExpression: 'cron(15 4 * * ? *)',
       State: 'ENABLED',
       Targets: [
@@ -101,7 +104,4 @@ describe('NightyNightForEc2', () => {
       ],
     });
   });
-
 });
-
-

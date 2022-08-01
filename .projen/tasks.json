@@ -1,8 +1,159 @@
 {
   "tasks": {
+    "build": {
+      "name": "build",
+      "description": "Full release build",
+      "steps": [
+        {
+          "spawn": "default"
+        },
+        {
+          "spawn": "pre-compile"
+        },
+        {
+          "spawn": "compile"
+        },
+        {
+          "spawn": "post-compile"
+        },
+        {
+          "spawn": "test"
+        },
+        {
+          "spawn": "package"
+        }
+      ]
+    },
+    "bump": {
+      "name": "bump",
+      "description": "Bumps version based on latest git tag and generates a changelog entry",
+      "env": {
+        "OUTFILE": "package.json",
+        "CHANGELOG": "dist/changelog.md",
+        "BUMPFILE": "dist/version.txt",
+        "RELEASETAG": "dist/releasetag.txt",
+        "RELEASE_TAG_PREFIX": ""
+      },
+      "steps": [
+        {
+          "builtin": "release/bump-version"
+        }
+      ],
+      "condition": "! git log --oneline -1 | grep -q \"chore(release):\""
+    },
+    "bundle": {
+      "name": "bundle",
+      "description": "Prepare assets",
+      "steps": [
+        {
+          "spawn": "bundle:functions/NightyNightForAsg.lambda"
+        },
+        {
+          "spawn": "bundle:functions/NightyNightForEc2.lambda"
+        },
+        {
+          "spawn": "bundle:functions/NightyNightForRds.lambda"
+        },
+        {
+          "spawn": "bundle:functions/WakeyWakeyForEc2.lambda"
+        },
+        {
+          "spawn": "bundle:functions/WakeyWakeyForRds.lambda"
+        }
+      ]
+    },
+    "bundle:functions/NightyNightForAsg.lambda": {
+      "name": "bundle:functions/NightyNightForAsg.lambda",
+      "description": "Create a JavaScript bundle from src/functions/NightyNightForAsg.lambda.ts",
+      "steps": [
+        {
+          "exec": "esbuild --bundle src/functions/NightyNightForAsg.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/functions/NightyNightForAsg.lambda/index.js\" --external:aws-sdk"
+        }
+      ]
+    },
+    "bundle:functions/NightyNightForAsg.lambda:watch": {
+      "name": "bundle:functions/NightyNightForAsg.lambda:watch",
+      "description": "Continuously update the JavaScript bundle from src/functions/NightyNightForAsg.lambda.ts",
+      "steps": [
+        {
+          "exec": "esbuild --bundle src/functions/NightyNightForAsg.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/functions/NightyNightForAsg.lambda/index.js\" --external:aws-sdk --watch"
+        }
+      ]
+    },
+    "bundle:functions/NightyNightForEc2.lambda": {
+      "name": "bundle:functions/NightyNightForEc2.lambda",
+      "description": "Create a JavaScript bundle from src/functions/NightyNightForEc2.lambda.ts",
+      "steps": [
+        {
+          "exec": "esbuild --bundle src/functions/NightyNightForEc2.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/functions/NightyNightForEc2.lambda/index.js\" --external:aws-sdk"
+        }
+      ]
+    },
+    "bundle:functions/NightyNightForEc2.lambda:watch": {
+      "name": "bundle:functions/NightyNightForEc2.lambda:watch",
+      "description": "Continuously update the JavaScript bundle from src/functions/NightyNightForEc2.lambda.ts",
+      "steps": [
+        {
+          "exec": "esbuild --bundle src/functions/NightyNightForEc2.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/functions/NightyNightForEc2.lambda/index.js\" --external:aws-sdk --watch"
+        }
+      ]
+    },
+    "bundle:functions/NightyNightForRds.lambda": {
+      "name": "bundle:functions/NightyNightForRds.lambda",
+      "description": "Create a JavaScript bundle from src/functions/NightyNightForRds.lambda.ts",
+      "steps": [
+        {
+          "exec": "esbuild --bundle src/functions/NightyNightForRds.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/functions/NightyNightForRds.lambda/index.js\" --external:aws-sdk"
+        }
+      ]
+    },
+    "bundle:functions/NightyNightForRds.lambda:watch": {
+      "name": "bundle:functions/NightyNightForRds.lambda:watch",
+      "description": "Continuously update the JavaScript bundle from src/functions/NightyNightForRds.lambda.ts",
+      "steps": [
+        {
+          "exec": "esbuild --bundle src/functions/NightyNightForRds.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/functions/NightyNightForRds.lambda/index.js\" --external:aws-sdk --watch"
+        }
+      ]
+    },
+    "bundle:functions/WakeyWakeyForEc2.lambda": {
+      "name": "bundle:functions/WakeyWakeyForEc2.lambda",
+      "description": "Create a JavaScript bundle from src/functions/WakeyWakeyForEc2.lambda.ts",
+      "steps": [
+        {
+          "exec": "esbuild --bundle src/functions/WakeyWakeyForEc2.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/functions/WakeyWakeyForEc2.lambda/index.js\" --external:aws-sdk"
+        }
+      ]
+    },
+    "bundle:functions/WakeyWakeyForEc2.lambda:watch": {
+      "name": "bundle:functions/WakeyWakeyForEc2.lambda:watch",
+      "description": "Continuously update the JavaScript bundle from src/functions/WakeyWakeyForEc2.lambda.ts",
+      "steps": [
+        {
+          "exec": "esbuild --bundle src/functions/WakeyWakeyForEc2.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/functions/WakeyWakeyForEc2.lambda/index.js\" --external:aws-sdk --watch"
+        }
+      ]
+    },
+    "bundle:functions/WakeyWakeyForRds.lambda": {
+      "name": "bundle:functions/WakeyWakeyForRds.lambda",
+      "description": "Create a JavaScript bundle from src/functions/WakeyWakeyForRds.lambda.ts",
+      "steps": [
+        {
+          "exec": "esbuild --bundle src/functions/WakeyWakeyForRds.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/functions/WakeyWakeyForRds.lambda/index.js\" --external:aws-sdk"
+        }
+      ]
+    },
+    "bundle:functions/WakeyWakeyForRds.lambda:watch": {
+      "name": "bundle:functions/WakeyWakeyForRds.lambda:watch",
+      "description": "Continuously update the JavaScript bundle from src/functions/WakeyWakeyForRds.lambda.ts",
+      "steps": [
+        {
+          "exec": "esbuild --bundle src/functions/WakeyWakeyForRds.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/functions/WakeyWakeyForRds.lambda/index.js\" --external:aws-sdk --watch"
+        }
+      ]
+    },
     "clobber": {
       "name": "clobber",
-      "category": "30.maintain",
       "description": "hard resets to HEAD of origin and cleans the local repo",
       "env": {
         "BRANCH": "$(git branch --show-current)"
@@ -33,35 +184,148 @@
       ],
       "condition": "git diff --exit-code > /dev/null"
     },
-    "compile": {
-      "name": "compile",
+    "compat": {
+      "name": "compat",
+      "description": "Perform API compatibility check against latest version",
       "steps": [
         {
-          "exec": "jsii --silence-warnings=reserved-word --no-fix-peer-dependencies && jsii-docgen && cp src/*.handler.ts lib/"
+          "exec": "jsii-diff npm:$(node -p \"require('./package.json').name\") -k --ignore-file .compatignore || (echo \"\nUNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .compatignore to skip.\n\" && exit 1)"
         }
       ]
     },
-    "test:compile": {
-      "name": "test:compile",
-      "category": "10.test",
-      "description": "compiles the test code",
+    "compile": {
+      "name": "compile",
+      "description": "Only compile",
       "steps": [
         {
-          "exec": "tsc --noEmit --project tsconfig.jest.json"
+          "exec": "jsii --silence-warnings=reserved-word"
+        }
+      ]
+    },
+    "default": {
+      "name": "default",
+      "description": "Synthesize project files",
+      "steps": [
+        {
+          "exec": "ts-node --project tsconfig.dev.json .projenrc.ts"
+        }
+      ]
+    },
+    "docgen": {
+      "name": "docgen",
+      "description": "Generate API.md from .jsii manifest",
+      "steps": [
+        {
+          "exec": "jsii-docgen -o API.md"
+        }
+      ]
+    },
+    "eject": {
+      "name": "eject",
+      "description": "Remove projen from the project",
+      "env": {
+        "PROJEN_EJECTING": "true"
+      },
+      "steps": [
+        {
+          "spawn": "default"
+        }
+      ]
+    },
+    "eslint": {
+      "name": "eslint",
+      "description": "Runs eslint against the codebase",
+      "steps": [
+        {
+          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern src test build-tools projenrc .projenrc.ts"
+        }
+      ]
+    },
+    "package": {
+      "name": "package",
+      "description": "Creates the distribution package",
+      "steps": [
+        {
+          "exec": "if [ ! -z ${CI} ]; then rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist; else npx projen package-all; fi"
+        }
+      ]
+    },
+    "package-all": {
+      "name": "package-all",
+      "description": "Packages artifacts for all target languages",
+      "steps": [
+        {
+          "spawn": "package:js"
+        },
+        {
+          "spawn": "package:python"
+        }
+      ]
+    },
+    "package:js": {
+      "name": "package:js",
+      "description": "Create js language bindings",
+      "steps": [
+        {
+          "exec": "jsii-pacmak -v --target js"
+        }
+      ]
+    },
+    "package:python": {
+      "name": "package:python",
+      "description": "Create python language bindings",
+      "steps": [
+        {
+          "exec": "jsii-pacmak -v --target python"
+        }
+      ]
+    },
+    "post-compile": {
+      "name": "post-compile",
+      "description": "Runs after successful compilation",
+      "steps": [
+        {
+          "spawn": "docgen"
+        }
+      ]
+    },
+    "pre-compile": {
+      "name": "pre-compile",
+      "description": "Prepare the project for compilation",
+      "steps": [
+        {
+          "spawn": "bundle"
+        }
+      ]
+    },
+    "release": {
+      "name": "release",
+      "description": "Prepare a release from \"main\" branch",
+      "env": {
+        "RELEASE": "true"
+      },
+      "steps": [
+        {
+          "exec": "rm -fr dist"
+        },
+        {
+          "spawn": "bump"
+        },
+        {
+          "spawn": "build"
+        },
+        {
+          "spawn": "unbump"
+        },
+        {
+          "exec": "git diff --ignore-space-at-eol --exit-code"
         }
       ]
     },
     "test": {
       "name": "test",
-      "category": "10.test",
       "description": "Run tests",
       "steps": [
-        {
-          "exec": "rm -fr lib/"
-        },
-        {
-          "spawn": "test:compile"
-        },
         {
           "exec": "jest --passWithNoTests --all --updateSnapshot"
         },
@@ -70,63 +334,8 @@
         }
       ]
     },
-    "build": {
-      "name": "build",
-      "category": "00.build",
-      "description": "Full release build (test+compile)",
-      "steps": [
-        {
-          "exec": "npx projen"
-        },
-        {
-          "spawn": "test"
-        },
-        {
-          "spawn": "compile"
-        },
-        {
-          "spawn": "package"
-        }
-      ]
-    },
-    "bump": {
-      "name": "bump",
-      "category": "20.release",
-      "description": "Commits a bump to the package version based on conventional commits",
-      "steps": [
-        {
-          "exec": "standard-version"
-        }
-      ],
-      "condition": "! git log --oneline -1 | grep -q \"chore(release):\""
-    },
-    "release": {
-      "name": "release",
-      "category": "20.release",
-      "description": "Bumps version & push to master",
-      "steps": [
-        {
-          "spawn": "bump"
-        },
-        {
-          "exec": "git push --follow-tags origin master"
-        }
-      ],
-      "condition": "! git log --oneline -1 | grep -q \"chore(release):\""
-    },
-    "test:watch": {
-      "name": "test:watch",
-      "category": "10.test",
-      "description": "Run jest in watch mode",
-      "steps": [
-        {
-          "exec": "jest --watch"
-        }
-      ]
-    },
     "test:update": {
       "name": "test:update",
-      "category": "10.test",
       "description": "Update jest snapshots",
       "steps": [
         {
@@ -134,66 +343,37 @@
         }
       ]
     },
-    "projen:upgrade": {
-      "name": "projen:upgrade",
-      "category": "30.maintain",
-      "description": "upgrades projen to the latest version",
+    "test:watch": {
+      "name": "test:watch",
+      "description": "Run jest in watch mode",
       "steps": [
         {
-          "exec": "yarn upgrade -L projen"
-        },
+          "exec": "jest --watch"
+        }
+      ]
+    },
+    "unbump": {
+      "name": "unbump",
+      "description": "Restores version to 0.0.0",
+      "env": {
+        "OUTFILE": "package.json",
+        "CHANGELOG": "dist/changelog.md",
+        "BUMPFILE": "dist/version.txt",
+        "RELEASETAG": "dist/releasetag.txt",
+        "RELEASE_TAG_PREFIX": ""
+      },
+      "steps": [
         {
-          "exec": "CI=\"\" yarn projen"
+          "builtin": "release/reset-version"
         }
       ]
     },
     "watch": {
       "name": "watch",
-      "category": "00.build",
       "description": "Watch & compile in the background",
       "steps": [
         {
-          "exec": "jsii -w --silence-warnings=reserved-word --no-fix-peer-dependencies"
-        }
-      ]
-    },
-    "package": {
-      "name": "package",
-      "category": "20.release",
-      "description": "Create an npm tarball",
-      "steps": [
-        {
-          "exec": "jsii-pacmak"
-        }
-      ]
-    },
-    "eslint": {
-      "name": "eslint",
-      "category": "10.test",
-      "description": "Runs eslint against the codebase",
-      "steps": [
-        {
-          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern src test build-tools .projenrc.js"
-        }
-      ]
-    },
-    "compat": {
-      "name": "compat",
-      "category": "20.release",
-      "description": "Perform API compatibility check against latest version",
-      "steps": [
-        {
-          "exec": "jsii-diff npm:$(node -p \"require('./package.json').name\") -k --ignore-file .compatignore || (echo \"\nUNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .compatignore to skip.\n\" && exit 1)"
-        }
-      ]
-    },
-    "docgen": {
-      "name": "docgen",
-      "category": "20.release",
-      "description": "Generate API.md from .jsii manifest",
-      "steps": [
-        {
-          "exec": "jsii-docgen"
+          "exec": "jsii -w --silence-warnings=reserved-word"
         }
       ]
     }

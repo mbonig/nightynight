@@ -1,5 +1,6 @@
-import { AutoScalingGroup } from '@aws-cdk/aws-autoscaling';
-import { Construct, Stack, StackProps } from '@aws-cdk/core';
+import { Stack, StackProps } from 'aws-cdk-lib';
+import { AutoScalingGroup } from 'aws-cdk-lib/aws-autoscaling';
+import { Construct } from 'constructs';
 import { NightyNightForAsg } from './asg';
 
 export class NightyNightTestStack extends Stack {

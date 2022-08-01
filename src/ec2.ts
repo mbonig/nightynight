@@ -1,10 +1,10 @@
-import { join } from 'path';
-import { CronOptions, Rule, RuleTargetInput, Schedule } from '@aws-cdk/aws-events';
-import { LambdaFunction } from '@aws-cdk/aws-events-targets';
-import { Runtime } from '@aws-cdk/aws-lambda';
-import { NodejsFunction } from '@aws-cdk/aws-lambda-nodejs';
-import { Arn, Construct, Stack } from '@aws-cdk/core';
+import { Arn, Stack } from 'aws-cdk-lib';
+import { CronOptions, Rule, RuleTargetInput, Schedule } from 'aws-cdk-lib/aws-events';
+import { LambdaFunction } from 'aws-cdk-lib/aws-events-targets';
 import * as statement from 'cdk-iam-floyd';
+import { Construct } from 'constructs';
+import { NightyNightForEc2Function } from './functions/NightyNightForEc2-function';
+import { WakeyWakeyForEc2Function } from './functions/WakeyWakeyForEc2-function';
 
 /**
  * Props for the NightNight construct.
@@ -43,9 +43,7 @@ export interface NightyNightForEc2Props {
 export class NightyNightForEc2 extends Construct {
   constructor(scope: Construct, id: string, props: NightyNightForEc2Props) {
     super(scope, id);
-    const lambda = new NodejsFunction(this, 'handler', {
-      entry: join(__dirname, 'NightyNightForEc2.handler.ts'),
-      runtime: Runtime.NODEJS_14_X,
+    const lambda = new NightyNightForEc2Function(this, 'handler', {
       environment: {
         INSTANCE_ID: props.instanceId ?? '',
         INSTANCE_FILTERS: props.filters ? JSON.stringify(props.filters) : '',
@@ -112,11 +110,11 @@ export interface WakeyWakeyForEc2Props {
    * is ignored.
    *
    * @example [{
-      Name: 'STRING_VALUE',
-      Values: [
-        'STRING_VALUE',
-      ]
-    }]
+   Name: 'STRING_VALUE',
+   Values: [
+   'STRING_VALUE',
+   ]
+   }]
    */
   readonly filters?: any[];
 }
@@ -133,13 +131,11 @@ export interface WakeyWakeyForEc2Props {
 export class WakeyWakeyForEc2 extends Construct {
   constructor(scope: Construct, id: string, props: WakeyWakeyForEc2Props) {
     super(scope, id);
-    const lambda = new NodejsFunction(this, 'handler', {
-      entry: join(__dirname, 'WakeyWakeyForEc2.handler.ts'),
+    const lambda = new WakeyWakeyForEc2Function(this, 'handler', {
       environment: {
         INSTANCE_ID: props.instanceId ?? '',
         INSTANCE_FILTERS: props.filters ? JSON.stringify(props.filters) : '',
       },
-      runtime: Runtime.NODEJS_12_X,
     });
 
     lambda.addToRolePolicy(new statement.Ec2().allow().toDescribeInstances());
