@@ -29,7 +29,7 @@ Name|Description
 
 This class is deprecated, please use NightyNightForEc2.
 
-__Implements__: [IConstruct](#constructs-iconstruct), [IConstruct](#aws-cdk-core-iconstruct), [IConstruct](#constructs-iconstruct), [IDependable](#aws-cdk-core-idependable)
+__Implements__: [IConstruct](#constructs-iconstruct), [IDependable](#constructs-idependable)
 __Extends__: [NightyNightForEc2](#matthewbonig-nightynight-nightynightforec2)
 
 ### Initializer
@@ -41,12 +41,12 @@ __Extends__: [NightyNightForEc2](#matthewbonig-nightynight-nightynightforec2)
 new NightyNight(scope: Construct, id: string, props: NightyNightProps)
 ```
 
-* **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
+* **scope** (<code>[Construct](#constructs-construct)</code>)  *No description*
 * **id** (<code>string</code>)  *No description*
 * **props** (<code>[NightyNightProps](#matthewbonig-nightynight-nightynightprops)</code>)  *No description*
   * **filters** (<code>Array<any></code>)  Filters to match to find an EC2 instance. __*Optional*__
   * **instanceId** (<code>string</code>)  the instanceId of the EC2 instance you'd like stopped. __*Optional*__
-  * **schedule** (<code>[CronOptions](#aws-cdk-aws-events-cronoptions)</code>)  An option CronOptions to specify the time of day to stop the instance. __*Default*__: { day: '*', hour: '4', minute: '0' }
+  * **schedule** (<code>[aws_events.CronOptions](#aws-cdk-lib-aws-events-cronoptions)</code>)  An option CronOptions to specify the time of day to stop the instance. __*Default*__: { day: '*', hour: '4', minute: '0' }
 
 
 
@@ -57,8 +57,8 @@ A construct that will build a Lambda and a CloudWatch Rule (cron schedule) that 
 
 Typically used when you've got and ASG that you can scale during set hours.
 
-__Implements__: [IConstruct](#constructs-iconstruct), [IConstruct](#aws-cdk-core-iconstruct), [IConstruct](#constructs-iconstruct), [IDependable](#aws-cdk-core-idependable)
-__Extends__: [Construct](#aws-cdk-core-construct)
+__Implements__: [IConstruct](#constructs-iconstruct), [IDependable](#constructs-idependable)
+__Extends__: [Construct](#constructs-construct)
 
 ### Initializer
 
@@ -69,12 +69,12 @@ __Extends__: [Construct](#aws-cdk-core-construct)
 new NightyNightForAsg(scope: Construct, id: string, props: NightyNightForAsgProps)
 ```
 
-* **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
+* **scope** (<code>[Construct](#constructs-construct)</code>)  *No description*
 * **id** (<code>string</code>)  *No description*
 * **props** (<code>[NightyNightForAsgProps](#matthewbonig-nightynight-nightynightforasgprops)</code>)  *No description*
-  * **autoScalingGroup** (<code>[IAutoScalingGroup](#aws-cdk-aws-autoscaling-iautoscalinggroup)</code>)  the AutoScalingGroup you'd like to change the instance count on. 
+  * **autoScalingGroup** (<code>[aws_autoscaling.IAutoScalingGroup](#aws-cdk-lib-aws-autoscaling-iautoscalinggroup)</code>)  the AutoScalingGroup you'd like to change the instance count on. 
   * **desiredCapacity** (<code>number</code>)  Desired capacity. 
-  * **schedule** (<code>[CronOptions](#aws-cdk-aws-events-cronoptions)</code>)  An option CronOptions to specify the time of day to scale. __*Default*__: { day: '*', hour: '4', minute: '0' }
+  * **schedule** (<code>[aws_events.CronOptions](#aws-cdk-lib-aws-events-cronoptions)</code>)  An option CronOptions to specify the time of day to scale. __*Default*__: { day: '*', hour: '4', minute: '0' }
 
 
 
@@ -86,8 +86,8 @@ A construct that will build a Lambda and a CloudWatch Rule (cron schedule) that 
 Typically used when you've got ec2 instances that you only need during business hours
 and want to reduce the costs of.
 
-__Implements__: [IConstruct](#constructs-iconstruct), [IConstruct](#aws-cdk-core-iconstruct), [IConstruct](#constructs-iconstruct), [IDependable](#aws-cdk-core-idependable)
-__Extends__: [Construct](#aws-cdk-core-construct)
+__Implements__: [IConstruct](#constructs-iconstruct), [IDependable](#constructs-idependable)
+__Extends__: [Construct](#constructs-construct)
 
 ### Initializer
 
@@ -98,12 +98,12 @@ __Extends__: [Construct](#aws-cdk-core-construct)
 new NightyNightForEc2(scope: Construct, id: string, props: NightyNightForEc2Props)
 ```
 
-* **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
+* **scope** (<code>[Construct](#constructs-construct)</code>)  *No description*
 * **id** (<code>string</code>)  *No description*
 * **props** (<code>[NightyNightForEc2Props](#matthewbonig-nightynight-nightynightforec2props)</code>)  *No description*
   * **filters** (<code>Array<any></code>)  Filters to match to find an EC2 instance. __*Optional*__
   * **instanceId** (<code>string</code>)  the instanceId of the EC2 instance you'd like stopped. __*Optional*__
-  * **schedule** (<code>[CronOptions](#aws-cdk-aws-events-cronoptions)</code>)  An option CronOptions to specify the time of day to stop the instance. __*Default*__: { day: '*', hour: '4', minute: '0' }
+  * **schedule** (<code>[aws_events.CronOptions](#aws-cdk-lib-aws-events-cronoptions)</code>)  An option CronOptions to specify the time of day to stop the instance. __*Default*__: { day: '*', hour: '4', minute: '0' }
 
 
 
@@ -115,8 +115,8 @@ A construct that will build a Lambda and a CloudWatch Rule (cron schedule) that 
 Typically used when you've got rds instances that you only need during business hours
 and want to reduce the costs of.
 
-__Implements__: [IConstruct](#constructs-iconstruct), [IConstruct](#aws-cdk-core-iconstruct), [IConstruct](#constructs-iconstruct), [IDependable](#aws-cdk-core-idependable)
-__Extends__: [Construct](#aws-cdk-core-construct)
+__Implements__: [IConstruct](#constructs-iconstruct), [IDependable](#constructs-idependable)
+__Extends__: [Construct](#constructs-construct)
 
 ### Initializer
 
@@ -127,11 +127,11 @@ __Extends__: [Construct](#aws-cdk-core-construct)
 new NightyNightForRds(scope: Construct, id: string, props: NightyNightForRdsProps)
 ```
 
-* **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
+* **scope** (<code>[Construct](#constructs-construct)</code>)  *No description*
 * **id** (<code>string</code>)  *No description*
 * **props** (<code>[NightyNightForRdsProps](#matthewbonig-nightynight-nightynightforrdsprops)</code>)  *No description*
   * **dbInstanceIdentifier** (<code>string</code>)  the DBInstanceIdentifier of the RDS instance you'd like stopped. 
-  * **schedule** (<code>[CronOptions](#aws-cdk-aws-events-cronoptions)</code>)  An option CronOptions to specify the time of day to stop the instance. __*Default*__: { day: '*', hour: '4', minute: '0' }
+  * **schedule** (<code>[aws_events.CronOptions](#aws-cdk-lib-aws-events-cronoptions)</code>)  An option CronOptions to specify the time of day to stop the instance. __*Default*__: { day: '*', hour: '4', minute: '0' }
 
 
 
@@ -143,8 +143,8 @@ A construct that will build a Lambda and a CloudWatch Rule (cron schedule) that 
 Typically used when you've got ec2 instances that you only need during business hours
 and want to reduce the costs of. Use in conjunction with the Nightynight construct at
 
-__Implements__: [IConstruct](#constructs-iconstruct), [IConstruct](#aws-cdk-core-iconstruct), [IConstruct](#constructs-iconstruct), [IDependable](#aws-cdk-core-idependable)
-__Extends__: [Construct](#aws-cdk-core-construct)
+__Implements__: [IConstruct](#constructs-iconstruct), [IDependable](#constructs-idependable)
+__Extends__: [Construct](#constructs-construct)
 
 ### Initializer
 
@@ -155,12 +155,12 @@ __Extends__: [Construct](#aws-cdk-core-construct)
 new WakeyWakeyForEc2(scope: Construct, id: string, props: WakeyWakeyForEc2Props)
 ```
 
-* **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
+* **scope** (<code>[Construct](#constructs-construct)</code>)  *No description*
 * **id** (<code>string</code>)  *No description*
 * **props** (<code>[WakeyWakeyForEc2Props](#matthewbonig-nightynight-wakeywakeyforec2props)</code>)  *No description*
   * **filters** (<code>Array<any></code>)  Filters to match to find an EC2 instance. __*Optional*__
   * **instanceId** (<code>string</code>)  the instanceId of the EC2 instance you'd like started. __*Optional*__
-  * **schedule** (<code>[CronOptions](#aws-cdk-aws-events-cronoptions)</code>)  An option CronOptions to specify the time of day to start the instance. __*Default*__: { day: '*', hour: '12', minute: '0' }
+  * **schedule** (<code>[aws_events.CronOptions](#aws-cdk-lib-aws-events-cronoptions)</code>)  An option CronOptions to specify the time of day to start the instance. __*Default*__: { day: '*', hour: '12', minute: '0' }
 
 
 
@@ -172,8 +172,8 @@ A construct that will build a Lambda and a CloudWatch Rule (cron schedule) that 
 Typically used when you've got rds instances that you only need during business hours
 and want to reduce the costs of.
 
-__Implements__: [IConstruct](#constructs-iconstruct), [IConstruct](#aws-cdk-core-iconstruct), [IConstruct](#constructs-iconstruct), [IDependable](#aws-cdk-core-idependable)
-__Extends__: [Construct](#aws-cdk-core-construct)
+__Implements__: [IConstruct](#constructs-iconstruct), [IDependable](#constructs-idependable)
+__Extends__: [Construct](#constructs-construct)
 
 ### Initializer
 
@@ -184,11 +184,11 @@ __Extends__: [Construct](#aws-cdk-core-construct)
 new WakeyWakeyForRds(scope: Construct, id: string, props: WakeyWakeyForRdsProps)
 ```
 
-* **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
+* **scope** (<code>[Construct](#constructs-construct)</code>)  *No description*
 * **id** (<code>string</code>)  *No description*
 * **props** (<code>[WakeyWakeyForRdsProps](#matthewbonig-nightynight-wakeywakeyforrdsprops)</code>)  *No description*
   * **dbInstanceIdentifier** (<code>string</code>)  the DBInstanceIdentifier of the RDS instance you'd like started. 
-  * **schedule** (<code>[CronOptions](#aws-cdk-aws-events-cronoptions)</code>)  An option CronOptions to specify the time of day to start the instance. __*Default*__: { day: '*', hour: '4', minute: '0' }
+  * **schedule** (<code>[aws_events.CronOptions](#aws-cdk-lib-aws-events-cronoptions)</code>)  An option CronOptions to specify the time of day to start the instance. __*Default*__: { day: '*', hour: '4', minute: '0' }
 
 
 
@@ -202,9 +202,9 @@ Props for the NightNight construct.
 
 Name | Type | Description 
 -----|------|-------------
-**autoScalingGroup** | <code>[IAutoScalingGroup](#aws-cdk-aws-autoscaling-iautoscalinggroup)</code> | the AutoScalingGroup you'd like to change the instance count on.
+**autoScalingGroup** | <code>[aws_autoscaling.IAutoScalingGroup](#aws-cdk-lib-aws-autoscaling-iautoscalinggroup)</code> | the AutoScalingGroup you'd like to change the instance count on.
 **desiredCapacity** | <code>number</code> | Desired capacity.
-**schedule**? | <code>[CronOptions](#aws-cdk-aws-events-cronoptions)</code> | An option CronOptions to specify the time of day to scale.<br/>__*Default*__: { day: '*', hour: '4', minute: '0' }
+**schedule**? | <code>[aws_events.CronOptions](#aws-cdk-lib-aws-events-cronoptions)</code> | An option CronOptions to specify the time of day to scale.<br/>__*Default*__: { day: '*', hour: '4', minute: '0' }
 
 
 
@@ -219,7 +219,7 @@ Name | Type | Description
 -----|------|-------------
 **filters**? | <code>Array<any></code> | Filters to match to find an EC2 instance.<br/>__*Optional*__
 **instanceId**? | <code>string</code> | the instanceId of the EC2 instance you'd like stopped.<br/>__*Optional*__
-**schedule**? | <code>[CronOptions](#aws-cdk-aws-events-cronoptions)</code> | An option CronOptions to specify the time of day to stop the instance.<br/>__*Default*__: { day: '*', hour: '4', minute: '0' }
+**schedule**? | <code>[aws_events.CronOptions](#aws-cdk-lib-aws-events-cronoptions)</code> | An option CronOptions to specify the time of day to stop the instance.<br/>__*Default*__: { day: '*', hour: '4', minute: '0' }
 
 
 
@@ -233,7 +233,7 @@ Props for the NightNight construct.
 Name | Type | Description 
 -----|------|-------------
 **dbInstanceIdentifier** | <code>string</code> | the DBInstanceIdentifier of the RDS instance you'd like stopped.
-**schedule**? | <code>[CronOptions](#aws-cdk-aws-events-cronoptions)</code> | An option CronOptions to specify the time of day to stop the instance.<br/>__*Default*__: { day: '*', hour: '4', minute: '0' }
+**schedule**? | <code>[aws_events.CronOptions](#aws-cdk-lib-aws-events-cronoptions)</code> | An option CronOptions to specify the time of day to stop the instance.<br/>__*Default*__: { day: '*', hour: '4', minute: '0' }
 
 
 
@@ -248,7 +248,7 @@ Name | Type | Description
 -----|------|-------------
 **filters**? | <code>Array<any></code> | Filters to match to find an EC2 instance.<br/>__*Optional*__
 **instanceId**? | <code>string</code> | the instanceId of the EC2 instance you'd like stopped.<br/>__*Optional*__
-**schedule**? | <code>[CronOptions](#aws-cdk-aws-events-cronoptions)</code> | An option CronOptions to specify the time of day to stop the instance.<br/>__*Default*__: { day: '*', hour: '4', minute: '0' }
+**schedule**? | <code>[aws_events.CronOptions](#aws-cdk-lib-aws-events-cronoptions)</code> | An option CronOptions to specify the time of day to stop the instance.<br/>__*Default*__: { day: '*', hour: '4', minute: '0' }
 
 
 
@@ -263,7 +263,7 @@ Name | Type | Description
 -----|------|-------------
 **filters**? | <code>Array<any></code> | Filters to match to find an EC2 instance.<br/>__*Optional*__
 **instanceId**? | <code>string</code> | the instanceId of the EC2 instance you'd like started.<br/>__*Optional*__
-**schedule**? | <code>[CronOptions](#aws-cdk-aws-events-cronoptions)</code> | An option CronOptions to specify the time of day to start the instance.<br/>__*Default*__: { day: '*', hour: '12', minute: '0' }
+**schedule**? | <code>[aws_events.CronOptions](#aws-cdk-lib-aws-events-cronoptions)</code> | An option CronOptions to specify the time of day to start the instance.<br/>__*Default*__: { day: '*', hour: '12', minute: '0' }
 
 
 
@@ -277,7 +277,7 @@ Props for the WakeyWakeyForRds construct.
 Name | Type | Description 
 -----|------|-------------
 **dbInstanceIdentifier** | <code>string</code> | the DBInstanceIdentifier of the RDS instance you'd like started.
-**schedule**? | <code>[CronOptions](#aws-cdk-aws-events-cronoptions)</code> | An option CronOptions to specify the time of day to start the instance.<br/>__*Default*__: { day: '*', hour: '4', minute: '0' }
+**schedule**? | <code>[aws_events.CronOptions](#aws-cdk-lib-aws-events-cronoptions)</code> | An option CronOptions to specify the time of day to start the instance.<br/>__*Default*__: { day: '*', hour: '4', minute: '0' }
 
 
 

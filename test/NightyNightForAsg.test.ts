@@ -1,7 +1,8 @@
-import '@aws-cdk/assert/jest';
-import { AutoScalingGroup } from '@aws-cdk/aws-autoscaling';
-import { InstanceClass, InstanceSize, InstanceType, MachineImage, Vpc } from '@aws-cdk/aws-ec2';
-import { App, Stack } from '@aws-cdk/core';
+
+import { App, Stack } from 'aws-cdk-lib';
+import { Template } from 'aws-cdk-lib/assertions';
+import { AutoScalingGroup } from 'aws-cdk-lib/aws-autoscaling';
+import { InstanceClass, InstanceSize, InstanceType, MachineImage, Vpc } from 'aws-cdk-lib/aws-ec2';
 import { NightyNightForAsg } from '../src';
 
 describe('NightyNightForAsg', () => {
@@ -18,7 +19,8 @@ describe('NightyNightForAsg', () => {
     new NightyNightForAsg(stack, 'nightynight', { autoScalingGroup: asg, desiredCapacity: 1 });
 
     // THEN
-    expect(stack).toHaveResourceLike('AWS::Lambda::Function', {
+    const assert = Template.fromStack(stack);
+    assert.hasResourceProperties('AWS::Lambda::Function', {
       Handler: 'index.handler',
       Role: {
         'Fn::GetAtt': [
@@ -26,13 +28,14 @@ describe('NightyNightForAsg', () => {
           'Arn',
         ],
       },
-      Runtime: 'nodejs12.x',
+      Runtime: 'nodejs14.x',
       Environment: {
         Variables: {
           AUTO_SCALING_GROUP_NAME: {
             Ref: 'testasgASG3AC5B124',
           },
           DESIRED_CAPACITY: '1',
+          AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
         },
       },
     });
@@ -58,7 +61,8 @@ describe('NightyNightForAsg', () => {
     });
 
     // THEN
-    expect(stack).toHaveResourceLike('AWS::Events::Rule', {
+    const assert = Template.fromStack(stack);
+    assert.hasResourceProperties('AWS::Events::Rule', {
       ScheduleExpression: 'cron(15 4 * * ? *)',
       State: 'ENABLED',
       Targets: [

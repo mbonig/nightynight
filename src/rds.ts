@@ -1,10 +1,10 @@
-import { join } from 'path';
-import { CronOptions, Rule, RuleTargetInput, Schedule } from '@aws-cdk/aws-events';
-import { LambdaFunction } from '@aws-cdk/aws-events-targets';
-import { Runtime } from '@aws-cdk/aws-lambda';
-import { NodejsFunction } from '@aws-cdk/aws-lambda-nodejs';
-import { Arn, Construct, Stack } from '@aws-cdk/core';
+import { Arn, ArnFormat, Stack } from 'aws-cdk-lib';
+import { CronOptions, Rule, RuleTargetInput, Schedule } from 'aws-cdk-lib/aws-events';
+import { LambdaFunction } from 'aws-cdk-lib/aws-events-targets';
 import * as statement from 'cdk-iam-floyd';
+import { Construct } from 'constructs';
+import { NightyNightForRdsFunction } from './functions/NightyNightForRds-function';
+import { WakeyWakeyForRdsFunction } from './functions/WakeyWakeyForRds-function';
 
 /**
  * Props for the NightNight construct.
@@ -37,9 +37,7 @@ export interface NightyNightForRdsProps {
 export class NightyNightForRds extends Construct {
   constructor(scope: Construct, id: string, props: NightyNightForRdsProps) {
     super(scope, id);
-    const lambda = new NodejsFunction(this, 'handler', {
-      entry: join(__dirname, 'NightyNightForRds.handler.ts'),
-      runtime: Runtime.NODEJS_12_X,
+    const lambda = new NightyNightForRdsFunction(this, 'handler', {
       environment: {
         DB_INSTANCE_IDENTIFIER: props.dbInstanceIdentifier,
       },
@@ -50,7 +48,7 @@ export class NightyNightForRds extends Construct {
     lambda.addToRolePolicy(new statement.Rds().allow().toStopDBInstance().on(Arn.format({
       resourceName: props.dbInstanceIdentifier,
       resource: 'db',
-      sep: ':',
+      arnFormat: ArnFormat.COLON_RESOURCE_NAME,
       service: 'rds',
     }, Stack.of(this))));
 
@@ -101,9 +99,7 @@ export interface WakeyWakeyForRdsProps {
 export class WakeyWakeyForRds extends Construct {
   constructor(scope: Construct, id: string, props: WakeyWakeyForRdsProps) {
     super(scope, id);
-    const lambda = new NodejsFunction(this, 'handler', {
-      entry: join(__dirname, 'WakeyWakeyForRds.handler.ts'),
-      runtime: Runtime.NODEJS_12_X,
+    const lambda = new WakeyWakeyForRdsFunction(this, 'handler', {
       environment: {
         DB_INSTANCE_IDENTIFIER: props.dbInstanceIdentifier,
       },
@@ -114,7 +110,7 @@ export class WakeyWakeyForRds extends Construct {
     lambda.addToRolePolicy(new statement.Rds().allow().toStartDBInstance().on(Arn.format({
       resourceName: props.dbInstanceIdentifier,
       resource: 'db',
-      sep: ':',
+      arnFormat: ArnFormat.COLON_RESOURCE_NAME,
       service: 'rds',
     }, Stack.of(this))));
 

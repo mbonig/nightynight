@@ -1,5 +1,5 @@
-import '@aws-cdk/assert/jest';
-import { App, Stack } from '@aws-cdk/core';
+import { App, Stack } from 'aws-cdk-lib';
+import { Template } from 'aws-cdk-lib/assertions';
 import { WakeyWakeyForRds } from '../src';
 
 describe('WakeyWakeyForRds', () => {
@@ -10,7 +10,8 @@ describe('WakeyWakeyForRds', () => {
     new WakeyWakeyForRds(stack, 'wakeywakey', { dbInstanceIdentifier: 'asdfasdfasdf' });
 
     // THEN
-    expect(stack).toHaveResourceLike('AWS::Lambda::Function', {
+    const assert = Template.fromStack(stack);
+    assert.hasResourceProperties('AWS::Lambda::Function', {
       Handler: 'index.handler',
       Role: {
         'Fn::GetAtt': [
@@ -18,7 +19,7 @@ describe('WakeyWakeyForRds', () => {
           'Arn',
         ],
       },
-      Runtime: 'nodejs12.x',
+      Runtime: 'nodejs14.x',
       Environment: {
         Variables: {
           DB_INSTANCE_IDENTIFIER: 'asdfasdfasdf',
@@ -41,7 +42,8 @@ describe('WakeyWakeyForRds', () => {
     });
 
     // THEN
-    expect(stack).toHaveResourceLike('AWS::Events::Rule', {
+    const assert = Template.fromStack(stack);
+    assert.hasResourceProperties('AWS::Events::Rule', {
       ScheduleExpression: 'cron(15 4 * * ? *)',
       State: 'ENABLED',
       Targets: [
