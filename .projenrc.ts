@@ -12,7 +12,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   authorName: 'Matthew Bonig',
   cdkVersion: '2.30.0',
   projenrcTs: true,
-  majorVersion: 1,
+  majorVersion: 2,
   repository: 'https://github.com/mbonig/nightynight',
   defaultReleaseBranch: 'main',
   deps: dependencies,
