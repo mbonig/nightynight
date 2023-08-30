@@ -37,7 +37,7 @@ describe('NightyNightForEcs', () => {
           'Arn',
         ],
       },
-      Runtime: 'nodejs14.x',
+      Runtime: 'nodejs16.x',
       Environment: {
         Variables: {
           CLUSTER_NAME: 'some-cluster-name',
