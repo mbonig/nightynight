@@ -19,7 +19,7 @@ describe('WakeyWakeyForRds', () => {
           'Arn',
         ],
       },
-      Runtime: 'nodejs14.x',
+      Runtime: 'nodejs16.x',
       Environment: {
         Variables: {
           DB_INSTANCE_IDENTIFIER: 'asdfasdfasdf',
