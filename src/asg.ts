@@ -1,7 +1,7 @@
 import { IAutoScalingGroup } from 'aws-cdk-lib/aws-autoscaling';
 import { CronOptions, Rule, RuleTargetInput, Schedule } from 'aws-cdk-lib/aws-events';
 import { LambdaFunction } from 'aws-cdk-lib/aws-events-targets';
-import * as statement from 'cdk-iam-floyd';
+import { Autoscaling } from 'cdk-iam-floyd/lib/generated';
 import { Construct } from 'constructs';
 import { NightyNightForAsgFunction } from './functions/NightyNightForAsg-function';
 
@@ -48,9 +48,9 @@ export class NightyNightForAsg extends Construct {
       },
     });
 
-    lambda.addToRolePolicy(new statement.Autoscaling().allow().toDescribeAutoScalingGroups());
+    lambda.addToRolePolicy(new Autoscaling().allow().toDescribeAutoScalingGroups());
 
-    lambda.addToRolePolicy(new statement.Autoscaling().allow().toSetDesiredCapacity().on(props.autoScalingGroup.autoScalingGroupArn));
+    lambda.addToRolePolicy(new Autoscaling().allow().toSetDesiredCapacity().on(props.autoScalingGroup.autoScalingGroupArn));
 
     let schedule = props.schedule || {
       day: '*',

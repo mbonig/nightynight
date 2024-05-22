@@ -28,7 +28,7 @@ describe('NightyNightForAsg', () => {
           'Arn',
         ],
       },
-      Runtime: 'nodejs16.x',
+      Runtime: 'nodejs18.x',
       Environment: {
         Variables: {
           AUTO_SCALING_GROUP_NAME: {

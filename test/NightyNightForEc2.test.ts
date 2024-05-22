@@ -19,7 +19,7 @@ describe('NightyNightForEc2', () => {
           'Arn',
         ],
       },
-      Runtime: 'nodejs16.x',
+      Runtime: 'nodejs18.x',
       Environment: {
         Variables: {
           INSTANCE_ID: 'asdfasdfasdf',
@@ -62,7 +62,7 @@ describe('NightyNightForEc2', () => {
           'Arn',
         ],
       },
-      Runtime: 'nodejs16.x',
+      Runtime: 'nodejs18.x',
       Environment: {
         Variables: {
           INSTANCE_ID: '',

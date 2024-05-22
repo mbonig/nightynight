@@ -28,3 +28,6 @@ cdk.context.json
 .idea/
 .parcel-cache/
 cdk.out/
+/.gitattributes
+/.projenrc.ts
+/projenrc
