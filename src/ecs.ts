@@ -1,7 +1,7 @@
 import { ICluster } from 'aws-cdk-lib/aws-ecs';
 import { CronOptions, Rule, RuleTargetInput, Schedule } from 'aws-cdk-lib/aws-events';
 import { LambdaFunction } from 'aws-cdk-lib/aws-events-targets';
-import * as statement from 'cdk-iam-floyd';
+import { Ecs } from 'cdk-iam-floyd/lib/generated';
 import { Construct } from 'constructs';
 import { NightyNightForEcsFunction } from './functions/NightyNightForEcs-function';
 import { CLUSTER_NAME_KEY, DESIRED_CAPACITY_KEY, SERVICE_NAME_KEY } from './functions/NightyNightForEcs.lambda';
@@ -60,7 +60,7 @@ export class NightyNightForEcs extends Construct {
       },
     });
 
-    lambda.addToRolePolicy(new statement.Ecs().allow()
+    lambda.addToRolePolicy(new Ecs().allow()
       .toUpdateService()
       .onService(props.cluster?.clusterName ?? DEFAULT_CLUSTER_NAME, props.serviceName));
 

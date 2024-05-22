@@ -1,7 +1,7 @@
 import { Arn, Stack } from 'aws-cdk-lib';
 import { CronOptions, Rule, RuleTargetInput, Schedule } from 'aws-cdk-lib/aws-events';
 import { LambdaFunction } from 'aws-cdk-lib/aws-events-targets';
-import * as statement from 'cdk-iam-floyd';
+import { Ec2 } from 'cdk-iam-floyd/lib/generated';
 import { Construct } from 'constructs';
 import { NightyNightForEc2Function } from './functions/NightyNightForEc2-function';
 import { WakeyWakeyForEc2Function } from './functions/WakeyWakeyForEc2-function';
@@ -50,9 +50,9 @@ export class NightyNightForEc2 extends Construct {
       },
     });
 
-    lambda.addToRolePolicy(new statement.Ec2().allow().toDescribeInstances());
+    lambda.addToRolePolicy(new Ec2().allow().toDescribeInstances());
 
-    lambda.addToRolePolicy(new statement.Ec2().allow().toStopInstances().on(Arn.format({
+    lambda.addToRolePolicy(new Ec2().allow().toStopInstances().on(Arn.format({
       resourceName: props.instanceId,
       resource: 'instance',
       service: 'ec2',
@@ -138,8 +138,8 @@ export class WakeyWakeyForEc2 extends Construct {
       },
     });
 
-    lambda.addToRolePolicy(new statement.Ec2().allow().toDescribeInstances());
-    lambda.addToRolePolicy(new statement.Ec2().allow().toStartInstances().on(Arn.format({
+    lambda.addToRolePolicy(new Ec2().allow().toDescribeInstances());
+    lambda.addToRolePolicy(new Ec2().allow().toStartInstances().on(Arn.format({
       resourceName: props.instanceId,
       resource: 'instance',
       service: 'ec2',

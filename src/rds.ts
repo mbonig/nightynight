@@ -1,7 +1,7 @@
 import { Arn, ArnFormat, Stack } from 'aws-cdk-lib';
 import { CronOptions, Rule, RuleTargetInput, Schedule } from 'aws-cdk-lib/aws-events';
 import { LambdaFunction } from 'aws-cdk-lib/aws-events-targets';
-import * as statement from 'cdk-iam-floyd';
+import { Rds } from 'cdk-iam-floyd/lib/generated';
 import { Construct } from 'constructs';
 import { NightyNightForRdsFunction } from './functions/NightyNightForRds-function';
 import { WakeyWakeyForRdsFunction } from './functions/WakeyWakeyForRds-function';
@@ -43,9 +43,9 @@ export class NightyNightForRds extends Construct {
       },
     });
 
-    lambda.addToRolePolicy(new statement.Rds().allow().toDescribeDBInstances());
+    lambda.addToRolePolicy(new Rds().allow().toDescribeDBInstances());
 
-    lambda.addToRolePolicy(new statement.Rds().allow().toStopDBInstance().on(Arn.format({
+    lambda.addToRolePolicy(new Rds().allow().toStopDBInstance().on(Arn.format({
       resourceName: props.dbInstanceIdentifier,
       resource: 'db',
       arnFormat: ArnFormat.COLON_RESOURCE_NAME,
@@ -105,9 +105,9 @@ export class WakeyWakeyForRds extends Construct {
       },
     });
 
-    lambda.addToRolePolicy(new statement.Rds().allow().toDescribeDBInstances());
+    lambda.addToRolePolicy(new Rds().allow().toDescribeDBInstances());
 
-    lambda.addToRolePolicy(new statement.Rds().allow().toStartDBInstance().on(Arn.format({
+    lambda.addToRolePolicy(new Rds().allow().toStartDBInstance().on(Arn.format({
       resourceName: props.dbInstanceIdentifier,
       resource: 'db',
       arnFormat: ArnFormat.COLON_RESOURCE_NAME,

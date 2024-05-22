@@ -70,7 +70,7 @@
       "description": "Create a JavaScript bundle from src/functions/NightyNightForAsg.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/functions/NightyNightForAsg.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/functions/NightyNightForAsg.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk"
+          "exec": "esbuild --bundle src/functions/NightyNightForAsg.lambda.ts --target=\"node18\" --platform=\"node\" --outfile=\"assets/functions/NightyNightForAsg.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:@aws-sdk/*"
         }
       ]
     },
@@ -79,7 +79,7 @@
       "description": "Continuously update the JavaScript bundle from src/functions/NightyNightForAsg.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/functions/NightyNightForAsg.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/functions/NightyNightForAsg.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk --watch"
+          "exec": "esbuild --bundle src/functions/NightyNightForAsg.lambda.ts --target=\"node18\" --platform=\"node\" --outfile=\"assets/functions/NightyNightForAsg.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:@aws-sdk/* --watch"
         }
       ]
     },
@@ -88,7 +88,7 @@
       "description": "Create a JavaScript bundle from src/functions/NightyNightForEc2.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/functions/NightyNightForEc2.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/functions/NightyNightForEc2.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk"
+          "exec": "esbuild --bundle src/functions/NightyNightForEc2.lambda.ts --target=\"node18\" --platform=\"node\" --outfile=\"assets/functions/NightyNightForEc2.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:@aws-sdk/*"
         }
       ]
     },
@@ -97,7 +97,7 @@
       "description": "Continuously update the JavaScript bundle from src/functions/NightyNightForEc2.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/functions/NightyNightForEc2.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/functions/NightyNightForEc2.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk --watch"
+          "exec": "esbuild --bundle src/functions/NightyNightForEc2.lambda.ts --target=\"node18\" --platform=\"node\" --outfile=\"assets/functions/NightyNightForEc2.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:@aws-sdk/* --watch"
         }
       ]
     },
@@ -106,7 +106,7 @@
       "description": "Create a JavaScript bundle from src/functions/NightyNightForEcs.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/functions/NightyNightForEcs.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/functions/NightyNightForEcs.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk"
+          "exec": "esbuild --bundle src/functions/NightyNightForEcs.lambda.ts --target=\"node18\" --platform=\"node\" --outfile=\"assets/functions/NightyNightForEcs.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:@aws-sdk/*"
         }
       ]
     },
@@ -115,7 +115,7 @@
       "description": "Continuously update the JavaScript bundle from src/functions/NightyNightForEcs.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/functions/NightyNightForEcs.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/functions/NightyNightForEcs.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk --watch"
+          "exec": "esbuild --bundle src/functions/NightyNightForEcs.lambda.ts --target=\"node18\" --platform=\"node\" --outfile=\"assets/functions/NightyNightForEcs.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:@aws-sdk/* --watch"
         }
       ]
     },
@@ -124,7 +124,7 @@
       "description": "Create a JavaScript bundle from src/functions/NightyNightForRds.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/functions/NightyNightForRds.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/functions/NightyNightForRds.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk"
+          "exec": "esbuild --bundle src/functions/NightyNightForRds.lambda.ts --target=\"node18\" --platform=\"node\" --outfile=\"assets/functions/NightyNightForRds.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:@aws-sdk/*"
         }
       ]
     },
@@ -133,7 +133,7 @@
       "description": "Continuously update the JavaScript bundle from src/functions/NightyNightForRds.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/functions/NightyNightForRds.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/functions/NightyNightForRds.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk --watch"
+          "exec": "esbuild --bundle src/functions/NightyNightForRds.lambda.ts --target=\"node18\" --platform=\"node\" --outfile=\"assets/functions/NightyNightForRds.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:@aws-sdk/* --watch"
         }
       ]
     },
@@ -142,7 +142,7 @@
       "description": "Create a JavaScript bundle from src/functions/WakeyWakeyForEc2.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/functions/WakeyWakeyForEc2.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/functions/WakeyWakeyForEc2.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk"
+          "exec": "esbuild --bundle src/functions/WakeyWakeyForEc2.lambda.ts --target=\"node18\" --platform=\"node\" --outfile=\"assets/functions/WakeyWakeyForEc2.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:@aws-sdk/*"
         }
       ]
     },
@@ -151,7 +151,7 @@
       "description": "Continuously update the JavaScript bundle from src/functions/WakeyWakeyForEc2.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/functions/WakeyWakeyForEc2.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/functions/WakeyWakeyForEc2.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk --watch"
+          "exec": "esbuild --bundle src/functions/WakeyWakeyForEc2.lambda.ts --target=\"node18\" --platform=\"node\" --outfile=\"assets/functions/WakeyWakeyForEc2.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:@aws-sdk/* --watch"
         }
       ]
     },
@@ -160,7 +160,7 @@
       "description": "Create a JavaScript bundle from src/functions/WakeyWakeyForRds.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/functions/WakeyWakeyForRds.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/functions/WakeyWakeyForRds.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk"
+          "exec": "esbuild --bundle src/functions/WakeyWakeyForRds.lambda.ts --target=\"node18\" --platform=\"node\" --outfile=\"assets/functions/WakeyWakeyForRds.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:@aws-sdk/*"
         }
       ]
     },
@@ -169,7 +169,7 @@
       "description": "Continuously update the JavaScript bundle from src/functions/WakeyWakeyForRds.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/functions/WakeyWakeyForRds.lambda.ts --target=\"node16\" --platform=\"node\" --outfile=\"assets/functions/WakeyWakeyForRds.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk --watch"
+          "exec": "esbuild --bundle src/functions/WakeyWakeyForRds.lambda.ts --target=\"node18\" --platform=\"node\" --outfile=\"assets/functions/WakeyWakeyForRds.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:@aws-sdk/* --watch"
         }
       ]
     },
@@ -258,7 +258,8 @@
       "description": "Runs eslint against the codebase",
       "steps": [
         {
-          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern src test build-tools projenrc .projenrc.ts"
+          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern $@ src test build-tools projenrc .projenrc.ts",
+          "receiveArgs": true
         }
       ]
     },
@@ -412,16 +413,13 @@
       },
       "steps": [
         {
-          "exec": "yarn upgrade npm-check-updates"
-        },
-        {
-          "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,esbuild,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest-junit,jest,jsii-diff,jsii-docgen,jsii-pacmak,npm-check-updates,projen,standard-version,ts-jest,ts-node,typescript,yarn,@aws-sdk/client-ecs,aws-cdk-lib,cdk-iam-floyd,constructs"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=esbuild,eslint-import-resolver-typescript,eslint-plugin-import,jsii-diff,jsii-docgen,jsii-pacmak,projen,ts-node,typescript,yarn,@aws-sdk/client-ecs,aws-sdk,cdk-iam-floyd"
         },
         {
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser esbuild eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff jsii-docgen jsii-pacmak npm-check-updates projen standard-version ts-jest ts-node typescript yarn @aws-sdk/client-ecs aws-cdk-lib cdk-iam-floyd constructs"
+          "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser esbuild eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii projen standard-version ts-jest ts-node typescript yarn @aws-sdk/client-ecs aws-sdk cdk-iam-floyd aws-cdk-lib constructs"
         },
         {
           "exec": "npx projen"
