@@ -13,7 +13,7 @@ describe('NightyNightForAsg', () => {
     const asg = new AutoScalingGroup(stack, 'test-asg', {
       autoScalingGroupName: 'testing',
       instanceType: InstanceType.of(InstanceClass.T3A, InstanceSize.MEDIUM),
-      machineImage: MachineImage.latestAmazonLinux(),
+      machineImage: MachineImage.latestAmazonLinux2023(),
       vpc: new Vpc(stack, 'test-vpc', {}),
     });
     new NightyNightForAsg(stack, 'nightynight', { autoScalingGroup: asg, desiredCapacity: 1 });
@@ -28,7 +28,7 @@ describe('NightyNightForAsg', () => {
           'Arn',
         ],
       },
-      Runtime: 'nodejs18.x',
+      Runtime: 'nodejs22.x',
       Environment: {
         Variables: {
           AUTO_SCALING_GROUP_NAME: {

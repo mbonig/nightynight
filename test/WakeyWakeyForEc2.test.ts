@@ -19,7 +19,7 @@ describe('WakeyWakey lambdas', () => {
           'Arn',
         ],
       },
-      Runtime: 'nodejs18.x',
+      Runtime: 'nodejs22.x',
       Environment: {
         Variables: {
           INSTANCE_ID: 'asdfasdfasdf',
@@ -56,7 +56,7 @@ describe('WakeyWakey lambdas', () => {
           'Arn',
         ],
       },
-      Runtime: 'nodejs18.x',
+      Runtime: 'nodejs22.x',
       Environment: {
         Variables: {
           INSTANCE_ID: '',

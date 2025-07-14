@@ -19,7 +19,7 @@ describe('NightyNightForRds', () => {
           'Arn',
         ],
       },
-      Runtime: 'nodejs18.x',
+      Runtime: 'nodejs22.x',
       Environment: {
         Variables: {
           DB_INSTANCE_IDENTIFIER: 'asdfasdfasdf',
