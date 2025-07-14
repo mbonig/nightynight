@@ -1,9 +1,5 @@
 const { awscdk } = require('projen');
 
-const dependencies = [
-  '@aws-sdk/client-ecs',
-  'cdk-iam-floyd',
-];
 const project = new awscdk.AwsCdkConstructLibrary({
   name: '@matthewbonig/nightynight',
   repositoryUrl: 'https://github.com/mbonig/nightynight',
@@ -11,12 +7,17 @@ const project = new awscdk.AwsCdkConstructLibrary({
   description: 'A CDK construct that will automatically stop a running EC2 instance at a given time.',
   authorAddress: 'matthew.bonig@gmail.com',
   authorName: 'Matthew Bonig',
-  cdkVersion: '2.80.0',
+  cdkVersion: '2.202.0',
+  jsiiVersion: '^5.8',
   projenrcTs: true,
   majorVersion: 2,
   repository: 'https://github.com/mbonig/nightynight',
   defaultReleaseBranch: 'main',
-  deps: [],
+
+  deps: [
+    '@aws-sdk/client-ecs',
+    'cdk-iam-floyd',
+  ],
   peerDeps: [],
   bundledDeps: [
     'aws-sdk',
@@ -34,19 +35,20 @@ const project = new awscdk.AwsCdkConstructLibrary({
     'rds',
     'cron',
   ],
-  python: {
+  publishToPypi: {
     module: 'mbonig.nightynight',
     distName: 'mbonig.nightynight',
   },
   buildWorkflow: true,
+  lambdaOptions: {
+    runtime: awscdk.LambdaRuntime.NODEJS_22_X,
+
+  },
 });
 
 project.addFields({
   main: 'lib/index.js',
   types: 'lib/index.d.ts',
-  awscdkio: {
-    twitter: 'mattbonig',
-  },
   public: true,
 });
 
